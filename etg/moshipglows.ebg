@@ -1,0 +1,57 @@
+
+eventStart(float size = 1000, float growSpeed = 1000)
+
+
+
+
+variable
+{
+    int notUsed = 1
+    RGBA spriteAlpha0
+    RGBA spriteAlpha1
+    RGBA spriteAlpha2
+    int glows
+}
+
+startup
+{
+
+    setDefaults()
+    setEffDefaults()
+    setScale(size)
+    setDeltaScale(growSpeed)
+    setColorA([255 + 255 * 256 + 255 * 65536 + 100 * 65536 * 256])
+        spriteAlpha0 <- [255 + 255 * 256 + 255 * 65536 + 100 * 65536 * 256]
+        spriteAlpha1 <- [255 + 220 * 256 + 180 * 65536 + 50 * 65536 * 256]
+        spriteAlpha2 <- [255 + 180 * 256 + 100 * 65536 + 0 * 65536 * 256]
+
+    setTexture(\textures\glow32 0, 0, 32, 32)
+    setAddColor(1.0, 0.35, 0.0)
+    setLifespan(2)
+
+    setDepthWrite(0)
+
+    glows <- createSprites(1, 0)
+}
+
+eachFrame
+{
+    modifyColorA(glows, spriteAlpha0)
+}
+
+timeIndex
+{
+    timeBlock(spriteAlpha0)
+    {
+        time(1, spriteAlpha1)
+        time(2, spriteAlpha2)
+    }
+}
+
+eachFrame
+{
+    at(2)
+    {
+        delete()
+    }
+}

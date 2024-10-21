@@ -1,0 +1,328 @@
+//
+//***R1  Loads***
+//deltas only
+
+
+//HitIonBeam
+LoadEffect              IonBeamZapR1.ebg
+
+//R1 Mothership Death loads
+//LoadEffect              moshipDust.ebg
+
+
+//r1death.etg
+//***R1***
+//r1death.etg
+
+//deaths
+
+setDeathEvent           R1,CLASS_Fighter,damage,DestDamageSmall.ebg
+setDeathEvent           R1,CLASS_Fighter,projectile,DestProjectileSmall.ebg
+setDeathEvent           R1,CLASS_Fighter,beam,DestBeam.ebg
+//setDeathEvent           R1,CLASS_Fighter,collision,
+//setDeathEvent           R1,CLASS_Fighter,special,
+
+setDeathEvent           R1,CLASS_Corvette,damage,DestDamageSmall.ebg
+setDeathEvent           R1,CLASS_Corvette,projectile,DestProjectileSmall.ebg
+setDeathEvent           R1,CLASS_Corvette,beam,DestBeam.ebg
+//setDeathEvent           R1,CLASS_Corvette,collision,
+//setDeathEvent           R1,CLASS_Corvette,special,
+
+setDeathEvent           R1,CLASS_Frigate,damage,DestDamageSmall.ebg
+setDeathEvent           R1,CLASS_Frigate,projectile,DestProjectileSmall.ebg
+setDeathEvent           R1,CLASS_Frigate,beam,DestBeam.ebg
+//setDeathEvent           R1,CLASS_Frigate,collision,
+//setDeathEvent           R1,CLASS_Frigate,special,
+
+setDeathEvent           R1,CLASS_Destroyer,damage,DestDamageLarge.ebg
+setDeathEvent           R1,CLASS_Destroyer,projectile,DestProjectileLarge.ebg
+setDeathEvent           R1,CLASS_Destroyer,beam,DestBeam.ebg
+//setDeathEvent           R1,CLASS_Destroyer,collision,
+//setDeathEvr1death.etgent           R1,CLASS_Destroyer,special,
+
+setDeathEvent           R1,CLASS_Carrier,damage,DestDamageLarge.ebg
+setDeathEvent           R1,CLASS_Carrier,projectile,DestProjectileLarge.ebg
+setDeathEvent           R1,CLASS_Carrier,beam,DestBeam.ebg
+//setDeathEvent           R1,CLASS_Carrier,collision,
+//setDeathEvent           R1,CLASS_Carrier,special,
+
+setDeathEvent           R1,CLASS_HeavyCruiser,damage,DestDamageLarge.ebg
+setDeathEvent           R1,CLASS_HeavyCruiser,projectile,DestProjectileLarge.ebg
+setDeathEvent           R1,CLASS_HeavyCruiser,beam,DestBeam.ebg
+//setDeathEvent           R1,CLASS_HeavyCruiser,collision,
+//setDeathEvent           R1,CLASS_HeavyCruiser,special,
+
+setDeathEvent           R1,CLASS_Mothership,damage,r1death.ebg
+setDeathEvent           R1,CLASS_Mothership,projectile,r1death.ebg
+setDeathEvent           R1,CLASS_Mothership,beam,r1death.ebg
+//setDeathEvent           R1,CLASS_Mothership,collision,
+//setDeathEvent           R1,CLASS_Mothership,special,
+
+setDeathEvent           R1,CLASS_Resource,damage,DestDamageLarge.ebg
+setDeathEvent           R1,CLASS_Resource,projectile,DestProjectileLarge.ebg
+setDeathEvent           R1,CLASS_Resource,beam,DestBeam.ebg
+//setDeathEvent           R1,CLASS_Resource,collision,
+//setDeathEvent           R1,CLASS_Resource,special,
+
+setDeathEvent           R1,CLASS_NonCombat,damage,DestDamageLarge.ebg
+setDeathEvent           R1,CLASS_NonCombat,projectile,DestProjectileLarge.ebg
+setDeathEvent           R1,CLASS_NonCombat,beam,DestBeam.ebg
+//setDeathEvent           R1,CLASS_NonCombat,collision,
+//setDeathEvent           R1,CLASS_NonCombat,special,
+
+
+//firing
+
+setFireEvent            R1,GS_VeryLargeIonCannon,FireIonCannonVeryLarge.ebg
+    setFireEvent            R1,GS_VeryLargeIonCannon,FireIonCannonVeryLarge01.ebg
+    setFireEvent            R1,GS_VeryLargeIonCannon,FireIonCannonVeryLarge02.ebg
+    setFireEvent            R1,GS_VeryLargeIonCannon,FireIonCannonVeryLarge03.ebg
+setFireEvent            R1,GS_LargeIonCannon,FireIonCannonLarge.ebg
+    setFireEvent            R1,GS_LargeIonCannon,FireIonCannonLarge01.ebg
+    setFireEvent            R1,GS_LargeIonCannon,FireIonCannonLarge02.ebg
+    setFireEvent            R1,GS_LargeIonCannon,FireIonCannonLarge03.ebg
+setFireEvent            R1,GS_MediumIonCannon,FireIonCannonMedium.ebg
+    setFireEvent            R1,GS_MediumIonCannon,FireIonCannonMedium01.ebg
+    setFireEvent            R1,GS_MediumIonCannon,FireIonCannonMedium02.ebg
+    setFireEvent            R1,GS_MediumIonCannon,FireIonCannonMedium03.ebg
+setFireEvent            R1,GS_SmallIonCannon,FireIonCannonSmall.ebg
+    setFireEvent            R1,GS_SmallIonCannon,FireIonCannonSmall01.ebg
+    setFireEvent            R1,GS_SmallIonCannon,FireIonCannonSmall02.ebg
+    setFireEvent            R1,GS_SmallIonCannon,FireIonCannonSmall03.ebg
+
+setFireEvent            R1,GS_MediumProjectile,FireProjectileMedium.ebg
+    setFireEvent            R1,GS_MediumProjectile,FireProjectileMedium01.ebg
+    setFireEvent            R1,GS_MediumProjectile,FireProjectileMedium02.ebg
+    setFireEvent            R1,GS_MediumProjectile,FireProjectileMedium03.ebg
+setFireEvent            R1,GS_SmallProjectile,FireEnergy.ebg
+
+setFireEvent            R1,GS_VeryLargeEnergyCannon,FireEnergyVeryLarge.ebg
+    setFireEvent            R1,GS_VeryLargeEnergyCannon,FireEnergyVeryLarge.ebg
+    setFireEvent            R1,GS_VeryLargeEnergyCannon,FireEnergyVeryLarge01.ebg
+    setFireEvent            R1,GS_VeryLargeEnergyCannon,FireEnergyVeryLarge01.ebg
+setFireEvent            R1,GS_LargeEnergyCannon,FireEnergyLarge.ebg
+    setFireEvent            R1,GS_LargeEnergyCannon,FireEnergyLarge.ebg
+    setFireEvent            R1,GS_LargeEnergyCannon,FireEnergyLarge01.ebg
+    setFireEvent            R1,GS_LargeEnergyCannon,FireEnergyLarge01.ebg
+setFireEvent            R1,GS_MediumEnergyCannon,FireEnergyMedium.ebg
+    setFireEvent            R1,GS_MediumEnergyCannon,FireEnergyMedium.ebg
+    setFireEvent            R1,GS_MediumEnergyCannon,FireEnergyMedium01.ebg
+    setFireEvent            R1,GS_MediumEnergyCannon,FireEnergyMedium01.ebg
+setFireEvent            R1,GS_SmallEnergyCannon,FireEnergySmall.ebg
+    setFireEvent            R1,GS_SmallEnergyCannon,FireEnergySmall.ebg
+    setFireEvent            R1,GS_SmallEnergyCannon,FireEnergySmall01.ebg
+    setFireEvent            R1,GS_SmallEnergyCannon,FireEnergySmall01.ebg
+
+setFireEvent            R1,GS_MineLauncher,FireMines.ebg
+    setFireEvent            R1,GS_MineLauncher,FireMines.ebg
+    setFireEvent            R1,GS_MineLauncher,FireMines.ebg
+    setFireEvent            R1,GS_MineLauncher,FireMines.ebg
+setFireEvent            R1,GS_MissleLauncher,FireMissiles.ebg
+    setFireEvent            R1,GS_MissleLauncher,FireMissiles.ebg
+    setFireEvent            R1,GS_MissleLauncher,FireMissiles.ebg
+    setFireEvent            R1,GS_MissleLauncher,FireMissiles.ebg
+setFireEvent            R1,GS_MediumPlasmaBomb,FirePlasmaMedium.ebg
+    setFireEvent            R1,GS_MediumPlasmaBomb,FirePlasmaMedium.ebg
+    setFireEvent            R1,GS_MediumPlasmaBomb,FirePlasmaMedium.ebg
+    setFireEvent            R1,GS_MediumPlasmaBomb,FirePlasmaMedium.ebg
+setFireEvent            R1,GS_VeryLargePlasmaBomb,FireEnergy.ebg
+setFireEvent            R1,GS_SmallPlasmaBomb,FirePlasmaSmall.ebg
+    setFireEvent            R1,GS_SmallPlasmaBomb,FirePlasmaSmall.ebg
+    setFireEvent            R1,GS_SmallPlasmaBomb,FirePlasmaSmall.ebg
+    setFireEvent            R1,GS_SmallPlasmaBomb,FirePlasmaSmall.ebg
+
+
+//hits
+
+//setHitEvent             R1,GS_VeryLargeIonCannon,HitEnergy.ebg
+setHitEvent             R1,GS_VeryLargeIonCannon,HitIonBeamR1.ebg
+    setHitEvent             R1,GS_VeryLargeIonCannon,HitIonBeamR1.ebg
+    setHitEvent             R1,GS_VeryLargeIonCannon,HitIonBeamR1.ebg
+    setHitEvent             R1,GS_VeryLargeIonCannon,HitIonBeamR1.ebg
+setHitEvent             R1,GS_LargeIonCannon,HitIonBeamR1.ebg
+    setHitEvent             R1,GS_LargeIonCannon,HitIonBeamR1.ebg
+    setHitEvent             R1,GS_LargeIonCannon,HitIonBeamR1.ebg
+    setHitEvent             R1,GS_LargeIonCannon,HitIonBeamR1.ebg
+setHitEvent             R1,GS_MediumIonCannon,HitIonBeamR1.ebg
+    setHitEvent             R1,GS_MediumIonCannon,HitIonBeamR1.ebg
+    setHitEvent             R1,GS_MediumIonCannon,HitIonBeamR1.ebg
+    setHitEvent             R1,GS_MediumIonCannon,HitIonBeamR1.ebg
+setHitEvent             R1,GS_SmallIonCannon,HitIonBeamR1.ebg
+    setHitEvent             R1,GS_SmallIonCannon,HitIonBeamR1.ebg
+    setHitEvent             R1,GS_SmallIonCannon,HitIonBeamR1.ebg
+    setHitEvent             R1,GS_SmallIonCannon,HitIonBeamR1.ebg
+
+//setHitEvent             R1,GS_Laser,HitEnergy.ebg
+setHitEvent             R1,GS_Laser,HitCannon.ebg
+    setHitEvent             R1,GS_Laser,HitCannon.ebg
+    setHitEvent             R1,GS_Laser,HitCannon.ebg
+    setHitEvent             R1,GS_Laser,HitCannon.ebg
+
+//setHitEvent             R1,GS_MediumProjectile,HitProjectile.ebg
+setHitEvent             R1,GS_MediumProjectile,HitCannon.ebg
+    setHitEvent             R1,GS_MediumProjectile,HitCannon.ebg
+    setHitEvent             R1,GS_MediumProjectile,HitCannon.ebg
+    setHitEvent             R1,GS_MediumProjectile,HitCannon.ebg
+setHitEvent             R1,GS_SmallProjectile,HitCannon.ebg
+    setHitEvent             R1,GS_SmallProjectile,HitCannon.ebg
+    setHitEvent             R1,GS_SmallProjectile,HitCannon.ebg
+    setHitEvent             R1,GS_SmallProjectile,HitCannon.ebg
+
+//setHitEvent             R1,GS_VeryLargeEnergyCannon,HitEnergy.ebg
+setHitEvent             R1,GS_VeryLargeEnergyCannon,HitCannon.ebg
+    setHitEvent             R1,GS_VeryLargeEnergyCannon,HitCannon.ebg
+    setHitEvent             R1,GS_VeryLargeEnergyCannon,HitCannon.ebg
+    setHitEvent             R1,GS_VeryLargeEnergyCannon,HitCannon.ebg
+setHitEvent             R1,GS_LargeEnergyCannon,HitCannon.ebg
+    setHitEvent             R1,GS_LargeEnergyCannon,HitCannon.ebg
+    setHitEvent             R1,GS_LargeEnergyCannon,HitCannon.ebg
+    setHitEvent             R1,GS_LargeEnergyCannon,HitCannon.ebg
+setHitEvent             R1,GS_MediumEnergyCannon,HitCannon.ebg
+    setHitEvent             R1,GS_MediumEnergyCannon,HitCannon.ebg
+    setHitEvent             R1,GS_MediumEnergyCannon,HitCannon.ebg
+    setHitEvent             R1,GS_MediumEnergyCannon,HitCannon.ebg
+setHitEvent             R1,GS_SmallEnergyCannon,HitCannon.ebg
+    setHitEvent             R1,GS_SmallEnergyCannon,HitCannon.ebg
+    setHitEvent             R1,GS_SmallEnergyCannon,HitCannon.ebg
+    setHitEvent             R1,GS_SmallEnergyCannon,HitCannon.ebg
+
+setHitEvent             R1,GS_MineLauncher,HitMines.ebg
+    setHitEvent             R1,GS_MineLauncher,HitMines.ebg
+    setHitEvent             R1,GS_MineLauncher,HitMines.ebg
+    setHitEvent             R1,GS_MineLauncher,HitMines.ebg
+    setHitEvent             R1,GS_MineLauncher,HitMines.ebg
+    setHitEvent             R1,GS_MineLauncher,HitMines.ebg
+setHitEvent             R1,GS_MissleLauncher,HitMines.ebg
+    setHitEvent             R1,GS_MissleLauncher,HitMines.ebg
+    setHitEvent             R1,GS_MissleLauncher,HitMines.ebg
+    setHitEvent             R1,GS_MissleLauncher,HitMines.ebg
+    setHitEvent             R1,GS_MissleLauncher,HitMines.ebg
+    setHitEvent             R1,GS_MissleLauncher,HitMines.ebg
+
+
+//setHitEvent             R1,GS_MediumPlasmaBomb,HitMines.ebg
+setHitEvent             R1,GS_MediumPlasmaBomb,HitPlasma.ebg
+    setHitEvent             R1,GS_MediumPlasmaBomb,HitPlasma.ebg
+    setHitEvent             R1,GS_MediumPlasmaBomb,HitPlasma.ebg
+    setHitEvent             R1,GS_MediumPlasmaBomb,HitPlasma.ebg
+setHitEvent             R1,GS_VeryLargePlasmaBomb,HitPlasma.ebg
+    setHitEvent             R1,GS_VeryLargePlasmaBomb,HitPlasma.ebg
+    setHitEvent             R1,GS_VeryLargePlasmaBomb,HitPlasma.ebg
+    setHitEvent             R1,GS_VeryLargePlasmaBomb,HitPlasma.ebg
+setHitEvent             R1,GS_SmallPlasmaBomb,HitPlasma.ebg
+    setHitEvent             R1,GS_SmallPlasmaBomb,HitPlasma.ebg
+    setHitEvent             R1,GS_SmallPlasmaBomb,HitPlasma.ebg
+    setHitEvent             R1,GS_SmallPlasmaBomb,HitPlasma.ebg
+
+
+//effects for bullets, added by Luke
+setBulletEffect         R1,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+    setBulletEffect         R1,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+    setBulletEffect         R1,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+setBulletEffect         R1,GS_MediumPlasmaBomb,BulletPlasmaBomb.ebg
+    setBulletEffect         R1,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+    setBulletEffect         R1,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+setBulletEffect         R1,GS_LargePlasmaBomb,BulletPlasmaBomb.ebg
+    setBulletEffect         R1,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+    setBulletEffect         R1,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+setBulletEffect         R1,GS_VeryLargePlasmaBomb,BulletPlasmaBomb.ebg
+    setBulletEffect         R1,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+    setBulletEffect         R1,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+
+//setBulletEffect         R1,GS_VeryLargeIonCannon,BulletLaserBeam.ebg
+//    setBulletEffect         R1,GS_VeryLargeIonCannon,BulletLaserBeam01.ebg
+//    setBulletEffect         R1,GS_VeryLargeIonCannon,BulletLaserBeam02.ebg
+//    setBulletEffect         R1,GS_VeryLargeIonCannon,BulletLaserBeam03.ebg
+//setBulletEffect         R1,GS_LargeIonCannon,BulletLaserBeam.ebg
+//    setBulletEffect         R1,GS_LargeIonCannon,BulletLaserBeam01.ebg
+//    setBulletEffect         R1,GS_LargeIonCannon,BulletLaserBeam02.ebg
+//    setBulletEffect         R1,GS_LargeIonCannon,BulletLaserBeam03.ebg
+//setBulletEffect         R1,GS_MediumIonCannon,BulletLaserBeam.ebg
+//    setBulletEffect         R1,GS_MediumIonCannon,BulletLaserBeam01.ebg
+//    setBulletEffect         R1,GS_MediumIonCannon,BulletLaserBeam02.ebg
+//    setBulletEffect         R1,GS_MediumIonCannon,BulletLaserBeam03.ebg
+//setBulletEffect         R1,GS_SmallIonCannon,BulletLaserBeam.ebg
+//    setBulletEffect         R1,GS_SmallIonCannon,BulletLaserBeam01.ebg
+//    setBulletEffect         R1,GS_SmallIonCannon,BulletLaserBeam02.ebg
+//    setBulletEffect         R1,GS_SmallIonCannon,BulletLaserBeam03.ebg
+    setBulletEffect         R1,GS_VeryLargeIonCannon,BulletIonRayR1.ebg
+    setBulletEffect         R1,GS_VeryLargeIonCannon,BulletIonRayR1.ebg
+    setBulletEffect         R1,GS_VeryLargeIonCannon,BulletIonRayR1.ebg
+setBulletEffect         R1,GS_LargeIonCannon,BulletIonRayR1.ebg
+    setBulletEffect         R1,GS_LargeIonCannon,BulletIonRayR1.ebg
+    setBulletEffect         R1,GS_LargeIonCannon,BulletIonRayR1.ebg
+    setBulletEffect         R1,GS_LargeIonCannon,BulletIonRayR1.ebg
+setBulletEffect         R1,GS_MediumIonCannon,BulletIonRayR1.ebg
+    setBulletEffect         R1,GS_MediumIonCannon,BulletIonRayR1.ebg
+    setBulletEffect         R1,GS_MediumIonCannon,BulletIonRayR1.ebg
+    setBulletEffect         R1,GS_MediumIonCannon,BulletIonRayR1.ebg
+setBulletEffect         R1,GS_SmallIonCannon,BulletIonRayR1.ebg
+    setBulletEffect         R1,GS_SmallIonCannon,BulletIonRayR1.ebg
+    setBulletEffect         R1,GS_SmallIonCannon,BulletIonRayR1.ebg
+    setBulletEffect         R1,GS_SmallIonCannon,BulletIonRayR1.ebg
+
+//setBulletEffect         R1,GS_Laser,BulletLaserBeam.ebg
+setBulletEffect         R1,GS_Laser,BulletDefenseLaser.ebg
+    setBulletEffect         R1,GS_Laser,BulletDefenseLaser.ebg
+    setBulletEffect         R1,GS_Laser,BulletDefenseLaser.ebg
+    setBulletEffect         R1,GS_Laser,BulletDefenseLaser.ebg
+
+//setBulletEffect         R1,GS_SmallEnergyCannon,BulletEnergy.ebg
+setBulletEffect         R1,GS_VeryLargeEnergyCannon,BulletCannonVeryLarge.ebg
+    setBulletEffect         R1,GS_VeryLargeEnergyCannon,BulletCannonVeryLarge.ebg
+    setBulletEffect         R1,GS_VeryLargeEnergyCannon,BulletCannonVeryLarge02.ebg
+    setBulletEffect         R1,GS_VeryLargeEnergyCannon,BulletCannonVeryLarge03.ebg
+//    setBulletEffect         R1,GS_VeryLargeEnergyCannon,BulletCannonVeryLarge04.ebg
+setBulletEffect         R1,GS_LargeEnergyCannon,BulletCannonLarge.ebg
+    setBulletEffect         R1,GS_LargeEnergyCannon,BulletCannonLarge.ebg
+    setBulletEffect         R1,GS_LargeEnergyCannon,BulletCannonLarge02.ebg
+    setBulletEffect         R1,GS_LargeEnergyCannon,BulletCannonLarge03.ebg
+//    setBulletEffect         R1,GS_LargeEnergyCannon,BulletCannonLarge04.ebg
+setBulletEffect         R1,GS_MediumEnergyCannon,BulletCannonMed.ebg
+    setBulletEffect         R1,GS_MediumEnergyCannon,BulletCannonMed.ebg
+    setBulletEffect         R1,GS_MediumEnergyCannon,BulletCannonMed02.ebg
+    setBulletEffect         R1,GS_MediumEnergyCannon,BulletCannonMed03.ebg
+//    setBulletEffect         R1,GS_MediumEnergyCannon,BulletCannonMed04.ebg
+setBulletEffect         R1,GS_SmallEnergyCannon,BulletGatling.ebg
+    setBulletEffect         R1,GS_SmallEnergyCannon,BulletGatling.ebg
+    setBulletEffect         R1,GS_SmallEnergyCannon,BulletGatling02.ebg
+    setBulletEffect         R1,GS_SmallEnergyCannon,BulletGatling03.ebg
+//    setBulletEffect         R1,GS_SmallEnergyCannon,BulletGatling04.ebg
+
+
+setBulletEffect         R1,GS_MediumProjectile,BulletProjectile.ebg
+
+//color of bullets  - as lines only
+setBulletColor         R1,GS_SmallPlasmaBomb,100,184,255
+setBulletColor         R1,GS_MediumPlasmaBomb,100,184,255
+setBulletColor         R1,GS_LargePlasmaBomb,100,184,255
+setBulletColor         R1,GS_VeryLargePlasmaBomb,100,184,255
+
+setBulletColor         R1,GS_VeryLargeIonCannon,200, 50, 50
+setBulletColor         R1,GS_LargeIonCannon,200, 50, 50
+setBulletColor         R1,GS_MediumIonCannon,200, 50, 50
+setBulletColor         R1,GS_SmallIonCannon,200, 50, 50
+
+setBulletColor         R1,GS_Laser, 217,80,33
+
+//effects for resource collection
+setAsteroidEffect      R1,R1resource_solid.ebg
+        setAsteroidEffect      R1,R1resource_solid.ebg
+        setAsteroidEffect      R1,R1resource_solid.ebg
+        setAsteroidEffect      R1,R1resource_solid.ebg
+
+setGaseousEffect      R1,R1resource_gaseous.ebg
+        setGaseousEffect      R1,R1resource_gaseous.ebg
+        setGaseousEffect      R1,R1resource_gaseous.ebg
+        setGaseousEffect      R1,R1resource_gaseous.ebg
+
+//effects for Tractor Beam on Salvage Capture corvettes
+//setTractorBeamEffect    R1,TractorBeam.ebg
+setTractorBeamEffect    R1,R1salvage.ebg
+        setTractorBeamEffect    R1,R1salvage.ebg
+        setTractorBeamEffect    R1,R1salvage.ebg
+        setTractorBeamEffect    R1,R1salvage.ebg
+
+bigBoomFactor           R1,CLASS_Fighter, -10
+
+

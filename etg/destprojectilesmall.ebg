@@ -1,0 +1,334 @@
+#line 1 "d:\\homeworld\\DataSrc\\ETG\\death\\DestProjectileSmall\\DestProjectileSmall.etg"
+#line 1 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 112 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "d:\\homeworld\\DataSrc\\ETG\\death\\DestProjectileSmall\\DestProjectileSmall.etg"
+eventStart(float size = 50)
+
+#line 1 "d:\\homeworld\\src\\game\\soundeventdefs.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 4 "d:\\homeworld\\DataSrc\\ETG\\death\\DestProjectileSmall\\DestProjectileSmall.etg"
+
+variable
+{
+float shockSize
+float shockSizeRate
+
+float smokeCloudSize
+float smokeCloudSpeed
+float smokePuffSize
+}
+
+startup
+{
+    setDefaults()
+}
+
+eachFrame
+{
+    
+    at(0.01)
+    {
+        setDefaults()
+
+        playSound([(3 + 4096)])
+
+            shockSize <- fmult(size, 1)
+            shockSizeRate <- fmult(size, 30)
+        setScale(shockSize)
+        setDeltaScale(shockSizeRate)
+        setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+        setAddColor(1.0, 0.75, 0.5)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(0.3)
+        setTexture(textures\glow32 0, 0, 32, 32)
+        createSprites(1, 0)
+    }
+
+    
+    at(0.01)
+    {
+        setDefaults()
+        spawn(DDSsparks.ebg, size)
+    }
+
+    
+    at(0.01)
+    {
+        
+        setDefaults()
+            smokeCloudSize <- fmult(size, 0.6)
+            smokeCloudSpeed <- fmult(size, 1)
+        setDeltaLOFDist(smokeCloudSize)
+        setDeltaR(smokeCloudSize, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setDeltaRDist(0, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setVelR(smokeCloudSpeed)
+        setVelLOFDist(smokeCloudSpeed)
+        setLifespan(2)
+            smokePuffSize <- fmult(size, 0.5)
+        createEffects(DPSsmokePuff.ebg, 4, 1, smokePuffSize)
+    }
+
+    
+    at(0.2)
+    {
+        setDefaults()
+            smokeCloudSize <- fmult(size, 0.5)
+            smokeCloudSpeed <- fmult(size, 2)
+        setDeltaLOFDist(smokeCloudSize)
+        setDeltaR(smokeCloudSize, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setDeltaRDist(0, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setVelR(smokeCloudSpeed)
+        setVelLOFDist(smokeCloudSpeed)
+        setLifespan(2)
+            smokePuffSize <- fmult(size, 0.3)
+        createEffects(DPSsmokePuff.ebg, 4, 1, smokePuffSize)
+    }
+
+
+
+}
+eachFrame
+{
+    at(0.1)
+    {
+        hideParentShip()
+    }
+    at(2)
+    {
+        deleteParentShip()
+        delete()
+    }
+}
+

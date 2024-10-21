@@ -1,0 +1,86 @@
+#line 1 "D:\\Homeworld\\Datasrc\\ETG\\hit\\IonCannon\\HitIonBeam.etg"
+#line 1 "D:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 76 "D:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "D:\\Homeworld\\Datasrc\\ETG\\hit\\IonCannon\\HitIonBeam.etg"
+#line 1 "D:\\Homeworld\\src\\game\\specialeventdefs.h"
+
+#line 1 "D:\\Homeworld\\Datasrc\\ETG\\hit\\IonCannon\\HitIonBeam.etg"
+eventStart(float damage = 20, int fatal = 0)
+
+maxFrequency(100)
+
+variable
+{
+
+int notNeededDebugOnly
+
+float masterscale = 1
+float sparkSize
+float sparkSpeed
+float sparkSpeedLOF
+float sparkSpeedDist
+float sparkLength
+float sparkLengthDist
+float temp
+
+}
+
+startup
+{
+
+
+
+        temp <- fmult(damage, 0.0002)
+        masterscale <- fadd(temp, 0.10)
+
+    setDefaults()
+        temp <- fmult(masterscale, 180)
+    setScale(temp)
+        temp <- fmult(masterscale, 60)
+    setDeltaScale(temp)
+    setColorA([255 + 255 * 256 + 255 * 65536 + 180 * 65536 * 256])
+    setDeltaColorA(0, 0, 0, -360)
+    setTexture(textures\glow32 0, 0, 32, 32)
+    setAddColor(0.5, 0.35, 1.5)
+    setLighting(0)
+    setIllum(1)
+    setLifespan(.5)
+    setOffsetLOF(-5)
+    createSprites(1, 0)
+
+    setDefaults()
+        temp <- fmult(masterscale, 450)
+    setScale(temp)
+    setColorA([60 + 170 * 256 + 255 * 65536 + 140 * 65536 * 256])
+    setDeltaColorA(0, 0, 0, -280)
+    setTexture(textures\shockwave32 0, 0, 32, 32)
+    setLighting(0)
+    setIllum(1)
+    setLifespan(.1)
+    setOffsetLOF(-5)
+    createSprites(1, 0)
+
+    setDefaults()
+        temp <- fmult(masterscale, 500)
+    setScale(temp)
+    setColorA([60 + 170 * 256 + 255 * 65536 + 230 * 65536 * 256])
+    setDeltaColorA(0, 0, 0, -460)
+    setTexture(textures\flare64 0, 0, 64, 64)
+    setLighting(0)
+    setIllum(1)
+    setLifespan(.1)
+    setOffsetLOF(-5)
+    createSprites(1, 0)    
+}
+
+eachFrame
+{
+    
+    at(2)
+    {
+        delete()
+    }
+}
+

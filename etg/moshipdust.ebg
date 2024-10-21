@@ -1,0 +1,67 @@
+
+eventStart()
+
+
+
+variable
+{
+
+    int notUsed = 1
+    int dust
+    RGBA dustColor0
+    RGBA dustColor1
+    RGBA dustColor2
+}
+
+startup
+{
+
+    setDefaults()
+    setEffDefaults()
+    setDeltaLOF(10)
+    setDeltaLOFDist(10)
+    setDeltaR(10, 6.2)
+    setDeltaRDist(5, 6.2)
+
+    setVelLOF(0)
+    setVelLOFDist(1500)
+    setVelR(1500)
+    setVelRDist(500)
+
+    setScale(500)
+    setScaleDist(100)
+    setColorA([255 + 255 * 256 + 255 * 65536 + 200 * 65536 * 256])
+        dustColor0 <- [255 + 255 * 256 + 255 * 65536 + 200 * 65536 * 256]
+        dustColor1 <- [255 + 255 * 256 + 255 * 65536 + 130 * 65536 * 256]
+        dustColor2 <- [255 + 255 * 256 + 255 * 65536 + 0 * 65536 * 256]
+    setLifespan(10)
+
+    setTexture(\textures\glow32 0, 0, 32, 32)
+    setAddColor(1.0, 0.25, 0.1)
+
+    setDepthWrite(0)
+
+    dust <- createSprites(3, 0)
+ }
+
+eachFrame
+{
+    modifyColorA(dust, dustColor0)
+}
+
+timeIndex
+{
+    timeBlock(dustColor0)
+    {
+        time(3.0, dustColor1)
+        time(9.0, dustColor2)
+    }
+}
+
+eachFrame
+{
+    at(9.0)
+    {
+        delete()
+    }
+}

@@ -1,0 +1,74 @@
+#line 1 "D:\\Homeworld\\DataSrc\\ETG\\death\\DestBeam\\DBboom.etg"
+#line 1 "D:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 111 "D:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "D:\\Homeworld\\DataSrc\\ETG\\death\\DestBeam\\DBboom.etg"
+#line 1 "D:\\Homeworld\\src\\game\\specialeventdefs.h"
+
+
+
+#line 1 "D:\\Homeworld\\DataSrc\\ETG\\death\\DestBeam\\DBboom.etg"
+eventStart(float size = 50)
+
+
+maxFrequency(30)
+
+variable
+{
+float glowSize
+float deltaGlowSize
+RGBA  modColorA
+int   sprite
+RGBA  modAddColorA1
+RGBA  modAddColorA2
+}
+
+startup
+{
+    
+    setDefaults()
+        glowSize <- fmult(size, 2)
+        deltaGlowSize <- fmult(size, 10)
+    setScale(glowSize)
+    setDeltaScale(deltaGlowSize)
+    setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+        modColorA <- [255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256]
+    setTexture(textures\glow32, 0, 0, 32, 32)
+    setAddColor(1.0, 0.35, 0.2)
+    setLighting(0)
+    setIllum(1)
+    setLifespan(1.0)
+    sprite <- createSprites(1, 0)
+
+        modAddColorA1 <- [255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256]
+        modAddColorA2 <- [255 + 255 * 256 + 255 * 65536 + 0 * 65536 * 256]
+}
+
+eachFrame
+{
+    modifyColorA(sprite, modColorA)
+
+    at(0.3)
+    {
+        setDefaults()
+        spawn(DBsphere.ebg, size)
+    }
+}
+
+timeIndex
+{
+    timeBlock(modColorA)
+    {
+        time(0.5, modAddColorA1)
+        time(1.1, modAddColorA2)
+    }
+}
+
+eachFrame
+{
+    at(1.1)
+    {
+        delete()
+    }
+}

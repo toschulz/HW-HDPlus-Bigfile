@@ -1,0 +1,170 @@
+#line 1 "d:\\homeworld\\Datasrc\\ETG\\damage\\light\\damageEngineSparks.etg"
+#line 1 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 112 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "d:\\homeworld\\Datasrc\\ETG\\damage\\light\\damageEngineSparks.etg"
+eventStart(float damage, float size)
+
+
+
+maxFrequency(15)
+
+variable
+{
+float radius
+float sparkSize
+float sparkSizeDist
+float sparkSizeRate
+}
+
+startup
+{
+    setDefaults()
+
+    
+    
+    
+
+        sparkSize <- fmult(size, 0.15)
+        sparkSizeDist <- fmult(size, 0.05)
+        sparkSizeRate <- fmult(size, -0.1)
+    setScale(sparkSize)
+    setDeltaScale(sparkSizeRate)
+    setScaleDist(sparkSizeDist)
+
+        radius <- fmult(size, 0.15)
+    setDeltaR(radius, [(360) * 2.0 * 3.14159265359789 / 360.0])
+    setDeltaRDist(radius, [(360) * 2.0 * 3.14159265359789 / 360.0])
+    setVelLOF(50)
+    setVelLOFDist(15)
+
+    setTexture(textures\glow32, 0, 0, 32, 32)
+    setColorA([255 + 255 * 256 + 255 * 65536 + 128 * 65536 * 256])
+    setAddColor(1.0, 0.45, 0.2)
+
+    setLifespan(2)
+    setIsWorldSpace(1)
+    setVelocityInWorldSpace(1)
+    setDrag(0.01)
+    maxFrequency(50)
+    createSprites(1, 0)
+}
+
+
+eachFrame
+{
+    at(2)
+    {
+        delete()
+    }
+}

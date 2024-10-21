@@ -1,0 +1,192 @@
+#line 1 "d:\\Homeworld\\Datasrc\\ETG\\fire\\FirePlasma\\FirePlasmaMedium.etg"
+#line 1 "d:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 112 "d:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "d:\\Homeworld\\Datasrc\\ETG\\fire\\FirePlasma\\FirePlasmaMedium.etg"
+
+
+eventStart(float damage = 30, int deathShot = 0)
+
+variable
+{
+
+int notUsed = 1
+float size
+float glowsize
+
+}
+
+startup
+{
+    size <- 3.7
+    
+    setDefaults()
+
+    setOffsetLOF(3)
+        glowsize <- fmult(size, 15)
+    setScale(glowsize)
+    setTexture(textures\Flare64, 0, 0, 64, 64)
+    setColorA([250 + 240 * 256 + 255 * 65536 + 200 * 65536 * 256])
+    setDeltaColorA(0.0, 0.0, 0.0,-1.0)
+    setAddColor(0.4,0.0, 0.45)
+    setLifespan(.12)
+    setLighting(0)
+    setIllum(1)
+    setIsWorldSpace(0)
+    setVelocityInWorldSpace(1)
+    setEffAttachParent(1)
+    createSprites(1,0)
+    
+    setDefaults()
+
+    setOffsetLOF(2)
+        glowsize <- fmult(size, 30)
+    setScale(glowsize)
+    setTexture(textures\glow32, 0, 0, 32, 32)
+    setColorA([217 + 81 * 256 + 255 * 65536 + 100 * 65536 * 256])
+    setDeltaColorA(0.0, 0.0, 0.0,-1.0)
+    setAddColor(0.9,0.0, 0.9)
+    setLifespan(0.12)
+    setLighting(0)
+    setIllum(1)
+    setIsWorldSpace(0)
+    setVelocityInWorldSpace(1)
+    setEffAttachParent(1)
+    createSprites(1,0)
+
+    setDefaults()
+
+    setOffsetLOF(2)
+        glowsize <- fmult(size, 4)
+    setScale(glowsize)
+        glowsize <- fmult(size, 16)
+    setLength(glowsize)
+    setMesh(etg\meshes\bulletfire.peo)
+    setTexture(textures\glow32, 0, 0, 32, 32)
+    setColorA([255 + 255 * 256 + 255 * 65536 + 170 * 65536 * 256])
+    setDeltaColorA(0.0, 0.0, 0.0,-9.0)
+    setAddColor(0.9,0.0, 0.9)
+    setLifespan(0.12)
+    setLighting(0)
+    setIllum(1)
+    setIsWorldSpace(0)
+    setVelocityInWorldSpace(1)
+    setEffAttachParent(1)
+        setDepthWrite(0)
+        setPseudoBillboard(1)
+    createMeshes(1,0)
+
+}
+
+eachFrame
+{
+    at(.12)
+
+    {
+        delete()
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

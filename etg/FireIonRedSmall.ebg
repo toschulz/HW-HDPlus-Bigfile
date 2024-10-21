@@ -1,0 +1,49 @@
+
+eventStart(float damage = 30, int deathShot = 0)
+
+variable
+{
+float size
+
+int   flame
+float flamesize
+float flamesizeTemp1
+float flamesizeTemp2
+
+int   glow
+float glowsize
+float glowsizeTemp1
+float glowsizeTemp2
+}
+startup
+{
+    setDefaults()
+    
+    size <- 40
+    setDefaults()
+    setScale(size)
+    glowsize <- size
+    setTexture(textures\glow32, 0, 0, 32, 32)
+    setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+    setDeltaColorA(0.0, 0.0, 0.0,-1.0)
+    setAddColor(1.0, 0.0, 0.0)
+    setLifespan(1.0)
+    setLighting(0)
+    setIllum(1)
+    glow <- createSprites(1,0)
+}
+eachFrame
+{
+    playSound([(3 + 16384)])
+    glowsizeTemp1 <- fmult(size, 1)
+    glowsizeTemp2 <- fmult(size, 1.25)
+    glowsize <- frandom(glowsizeTemp1, glowsizeTemp2)
+    modifyScale(glow, glowsize)
+}
+eachFrame
+{
+    at(1.0)
+    {
+        delete()
+    }
+}

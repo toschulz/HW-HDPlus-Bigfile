@@ -1,0 +1,22 @@
+
+eventStart()
+
+variable
+{
+    float scale = 300.0
+    float velocity = 0.0
+}
+
+startup
+{
+    setEffDefaults()
+    spawn(B5TestExplosionMS.ebg, scale, velocity)
+}
+
+eachFrame
+{
+    at(0.25)
+    {
+        delete()
+    }
+}

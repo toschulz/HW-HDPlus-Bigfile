@@ -1,0 +1,273 @@
+// B5 Generic Debris - v1.2 - CnlPepper@mailandnews.com
+
+// Usage: spawn(B5debris, number of objects, debris type, size, velocity)
+
+// Debris types:
+//     0) Hull Panel (3 Rnd. Textures)
+//     1) Girder
+//     2) Metal Grid
+//     3) Large Damaged Metal Chunk #1
+//     4) Large Damaged Metal Chunk #2
+//     5) Humanoid [special is fixed size + relatively high poly]
+//     6) Pipes (2 Rnd. Objects)
+//     7) Metal Lump (3 Rnd. Objects)
+//     8) Glowing Debris
+//     9) Burning Debris
+
+eventStart(int number = 1, int type = 0, float debrissize = 40, float debrisvelocity = 40)
+
+variable
+{
+float size
+float vel
+
+float temp
+float temp2
+
+float tumbleX
+float tumbleY
+float tumbleZ
+
+int debris
+
+RGBA DebrisColor0
+RGBA DebrisColor1
+RGBA DebrisColor2
+}
+
+startup
+{
+        size <- fmult(debrissize, 1)
+        vel <- fmult(debrisvelocity, 1)
+
+    setDefaults()
+
+    if(type < 8) // <---- Non-burning debris
+        {
+        // ********************** Debris Scaling ***********************
+           temp <- fmult(size, 0.018)
+        setScale(temp)
+    
+            temp <- fmult(size, 0.002)
+        setScaleDist(temp)
+    
+        // ************* Debris Velocity and Distribution **************
+            temp <- fmult(size, 0.4)
+        setDeltaLOFDist(temp)
+
+            temp <- fmult(size, 0.4)
+        setDeltaR(temp, [(360) * 2.0 * 3.14159265359789 / 360.0])
+
+            temp <- fmult(size, 0.2)
+        setDeltaRDist(temp, [(360) * 2.0 * 3.14159265359789 / 360.0])
+
+            temp <- fmult(vel, 1.4)
+        setVelLOFDist(temp)
+
+            temp <- fmult(vel, 0.7)
+        setVelR(temp)
+
+            temp <- fmult(vel, 0.5)
+        setVelRDist(temp)
+
+            temp <- fmult(size, 1)
+        setLOFOffset(temp)
+
+        // ******************** Texture and Model **********************
+        setAlphaMode(0)
+        setDepthWrite(1)
+        setLighting(1)
+        setIllum(0)
+        setLifespan(7.0)
+
+        if(type == 0)
+            {
+            // **** Hull Panel ****
+            setMesh(etg\meshes\bentpanel.peo)
+            setTexture(textures\debris\B5debrispanel, 0, 0, 128, 128)                
+            }
+        if(type == 1)
+            {
+            // **** Girder ****
+            setMesh(etg\meshes\girder.peo)
+            setTexture(textures\debris\B5debrisgirder, 0, 0, 128, 32)         
+            }
+        if(type == 2)
+            {
+            // **** Metal Grid ****
+            setMesh(etg\meshes\flatpanel.peo)
+            setTexture(textures\debris\B5debrisgrid, 0, 0, 128, 128)       
+            }
+        if(type == 3)
+            {
+            // **** Damaged Metal Chunk #1 ****
+            setMesh(etg\meshes\debris1.peo)
+            setTexture(textures\debris\B5debrispanel, 0, 0, 128, 128)                
+            }
+        if(type == 4)
+            {
+            // **** Damaged Metal Chunk #2 ****
+            setMesh(etg\meshes\debris1.peo)
+            setTexture(textures\debris\B5debrisgirder, 0, 0, 128, 32)                
+            }
+    
+        if(type == 5)
+            {
+            // **** Humanoid [Special - overrides size settings] ****
+            setScale(1)
+            setScaleDist(0.01)
+            setMesh(etg\meshes\debris1.peo)
+            setTexture(textures\debris\B5debrisgirder, 0, 0, 128, 32)                
+            }
+        if(type == 6)
+            {
+            // **** Pipe ****
+            alternate
+                {       
+                alt(1):
+                    setMesh(etg\meshes\pipe.peo)
+                alt(1):
+                    setMesh(etg\meshes\bentpipe.peo)
+                }
+            alternate
+                {       
+                alt(1):
+                    setTexture(textures\debris\B5debrispanel, 0, 0, 128, 128)      
+                alt(1):
+                    setTexture(textures\debris\B5debrispanel, 0, 0, 128, 128)      
+                }
+            }
+        if(type == 7)
+            {
+            // **** Metal Lumps ****
+            alternate
+                {       
+                alt(1):
+                    setMesh(etg\meshes\block1.peo)
+                alt(1):
+                    setMesh(etg\meshes\block2.peo)
+                alt(1):
+                    setMesh(etg\meshes\block3.peo)
+                }
+            setTexture(textures\debris\B5debrispanel, 0, 0, 128, 128)                
+            }
+
+        setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+            DebrisColor0 <- [255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256]
+            DebrisColor1 <- [255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256]
+            DebrisColor2 <- [255 + 255 * 256 + 255 * 65536 + 0 * 65536 * 256]
+
+    // ****************** Create Debris + Tumble *******************
+        debris <- createMeshes(number, 0)
+            {
+            // ***************** Multiple Mesh Per Type Cycling ****************
+            if(type == 7)
+                {
+                // **** Metal Lumps ****
+                alternate
+                    {       
+                    alt(1):
+                        setMesh(etg\meshes\block1.peo)
+                    alt(1):
+                        setMesh(etg\meshes\block2.peo)
+                    alt(1):
+                        setMesh(etg\meshes\block3.peo)
+                    }
+                setTexture(textures\debris\B5debrispanel, 0, 0, 128, 128)                
+                }
+
+            // *********************** Object Tumble ***************************
+                temp <- [(0.1) * 2.0 * 3.14159265359789 / 360.0]
+                temp2 <- [(360) * 2.0 * 3.14159265359789 / 360.0]
+                tumbleX <- frandom(temp, temp2)
+                tumbleY <- frandom(temp, temp2)
+                tumbleZ <- frandom(temp, temp2)
+            setTumble(tumbleX, tumbleY, tumbleZ)
+           
+                temp <- [-1.3]
+                temp2 <- [1.3]
+                tumbleX <- frandom(temp, temp2)
+            alternate
+                {
+                alt(1):
+                    setDeltaTumble(tumbleX, 0, 0)
+                alt(1):
+                    setDeltaTumble(0, tumbleX, 0)
+                alt(1):
+                    setDeltaTumble(0, 0, tumbleX)
+                }
+            }
+        }
+
+    if(type > 7) // <---- Glowing/Burning debris
+	{
+        // ************* Debris Velocity and Distribution **************
+            temp <- fmult(size, 0.4)
+        setDeltaLOFDist(temp)
+
+            temp <- fmult(size, 0.4)
+        setDeltaR(temp, [(360) * 2.0 * 3.14159265359789 / 360.0])
+
+            temp <- fmult(size, 0.2)
+        setDeltaRDist(temp, [(360) * 2.0 * 3.14159265359789 / 360.0])
+
+            temp <- fmult(vel, 1.4)
+        setVelLOFDist(temp)
+
+            temp <- fmult(vel, 0.7)
+        setVelR(temp)
+
+            temp <- fmult(vel, 0.5)
+        setVelRDist(temp)
+
+            temp <- fmult(size, 1)
+        setLOFOffset(temp)
+
+        // ************************ Debris Type ************************        
+
+        if(type == 8)
+            {
+            // **** Burning Debris #2 ****
+            setIsworldSpace(1)
+            setVelocityInWorldSpace(1)
+            createEffects(B5genericdebrisspawn.ebg, number, 0, 0, size, vel)         
+            }
+        if(type == 9)
+            {
+            // **** Burning Debris #2 ****
+            setIsworldSpace(1) 
+            setVelocityInWorldSpace(1)
+            createEffects(B5genericdebrisspawn.ebg, number, 0, 1, size, vel)
+
+            }
+ 	}
+}
+
+eachFrame
+{
+    if(type < 8)
+	{
+        modifyColorA(debris, DebrisColor0)
+	}
+}
+
+timeIndex
+{
+    if(type < 8)
+	{
+        timeBlock(DebrisColor0)
+            {
+            time(6.2, DebrisColor1)
+            time(7.0, DebrisColor2)
+            }
+        }
+}
+
+
+eachFrame
+{
+    at(7.5)
+    {
+        delete()
+    }
+}

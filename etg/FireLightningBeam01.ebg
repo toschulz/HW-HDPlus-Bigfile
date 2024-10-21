@@ -1,0 +1,81 @@
+#line 1 "d:\\Homeworld\\Datasrc\\ETG\\fire\\FirePlasma\\FirePlasmaMedium.etg"
+#line 1 "d:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 112 "d:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "d:\\Homeworld\\Datasrc\\ETG\\fire\\FirePlasma\\FirePlasmaMedium.etg"
+
+
+eventStart(float damage = 30, int deathShot = 0)
+
+variable
+{
+
+int notUsed = 1
+float size
+float glowsize
+float flaresize
+float Temp1
+float Temp2
+float Temp3
+
+int   glow
+int   flare
+}
+
+startup
+{
+        size <- 3.7
+        flaresize <- fmult(size,12)
+        glowsize <- fmult(size, 48)
+
+    setDefaults()
+    setOffsetLOF(3)
+    setScale(flaresize)
+    setTexture(textures\Flare32, 0, 0, 32, 32)
+    setColorA([255 + 255 * 256 + 128 * 65536 + 225 * 65536 * 256])
+    setDeltaColorA(0.0, 0.0, 0.0,-0.5)
+    setAddColor(0.8,0.9, 0.0)
+    setLifespan(2.0)
+    setLighting(0)
+    setIllum(1)
+    setIsWorldSpace(0)
+    setVelocityInWorldSpace(1)
+    setEffAttachParent(1)
+    flare <- createSprites(1,0)
+    
+    setDefaults()
+    setOffsetLOF(2)
+    setScale(glowsize)
+    setTexture(textures\glow32, 0, 0, 32, 32)
+    setColorA([255 + 255 * 256 + 128 * 65536 + 95 * 65536 * 256])
+    setDeltaColorA(0.0, 0.0, 0.0,-0.5)
+    setAddColor(0.8,0.9, 0.0)
+    setLifespan(2.0)
+    setLighting(0)
+    setIllum(1)
+    setIsWorldSpace(0)
+    setVelocityInWorldSpace(1)
+    setEffAttachParent(1)
+    glow <- createSprites(1,0)
+}
+eachFrame
+{
+        Temp1 <- fmult(flaresize, 1)
+        Temp2 <- fmult(flaresize, 1.25)
+        Temp3 <- frandom(Temp1, Temp2)
+    modifyScale(flare, Temp3)
+        Temp1 <- fmult(glowsize, 1)
+        Temp2 <- fmult(glowsize, 1.25)
+        Temp3 <- frandom(Temp1, Temp2)
+    modifyScale(glow, Temp3)
+}
+
+eachFrame
+{
+    at(2.0)
+
+    {
+        delete()
+    }
+}

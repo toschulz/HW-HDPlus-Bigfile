@@ -1,0 +1,138 @@
+#line 1 "d:\\Homeworld\\DataSrc\\ETG\\death\\DestBeam\\DestBeam.etg"
+#line 1 "d:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 112 "d:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "d:\\Homeworld\\DataSrc\\ETG\\death\\DestBeam\\DestBeam.etg"
+eventStart(float size = 40)
+
+#line 1 "d:\\Homeworld\\src\\game\\soundeventdefs.h"
+maxFrequency(30)
+#line 127 "d:\\Homeworld\\src\\game\\soundeventdefs.h"
+#line 4 "d:\\Homeworld\\DataSrc\\ETG\\death\\DestBeam\\DestBeam.etg"
+
+variable
+{
+float DeltaLOF
+float DeltaLOFDist
+float DeltaR
+float DeltaRDist
+}
+startup
+{
+    setDefaults()
+}
+
+eachFrame
+{
+
+
+
+    at(0.5)
+    {
+        setDefaults()
+
+        setDeltaLOF(0.01)
+        setDeltaLOFDist(0.01)
+        setDeltaR(0.01, 0.01)
+        setDeltaRDist(0.01, 0.01)
+
+        setColorA([255 + 255 * 256 + 255 * 65536 + 2550 * 65536 * 256])
+        setScale(50)
+        setLifespan(2)
+        setIsWorldSpace(1)
+        
+        createEffects(mointshipDust.ebg, 30, 5)
+    }
+
+
+
+
+    at(0.11)
+    {
+        playSound([(5 + 4096)])       
+        spawn(DBsphere.ebg, size)
+    }  
+    
+    at(0.13)
+    {
+        
+        spawn(B5sparks.ebg, size)
+    }
+    at(0.15)
+    {
+        
+        spawn(DBsphere.ebg, size)
+    }
+
+    at(0.17)
+    {
+        
+        spawn(HitLargeCannon.ebg, size)
+    }
+    
+    at(0.19)
+    {
+        
+        spawn(B5sparksLite.ebg, size)
+    }
+
+    at(0.22)
+    {
+        setDefaults()
+        spawn(B5sparks.ebg, size)
+    }
+    at(0.32)
+    {
+        
+        spawn(B5sparksLite.ebg, size)
+    }
+    at(0.34)
+    {
+        
+        spawn(HitLargeCannon.ebg, size)
+    }
+
+    //at(0.39)
+    //{
+    //
+    //    spawn(DDSshockwave.ebg, size)
+    //}
+    //at(0.40)
+    //{
+    //
+    //    spawn(DDSshockwave.ebg, size)
+    //}
+    //at(0.41)
+    //{
+    //
+    //    spawn(DDSshockwave.ebg, size)
+    //}
+    //at(0.47)
+    //{
+    //
+    //    spawn(HitLargeCannon.ebg, size)
+    //}
+    
+}
+
+eachFrame
+{
+
+   at(0.49)
+    {
+        hideParentShip()
+        deleteParentShip()
+    }
+    at(0.5)
+    {
+        
+        spawn(B5sparks.ebg, size)
+    } 
+
+
+    at(2.8)
+    {
+        delete()
+    }
+}

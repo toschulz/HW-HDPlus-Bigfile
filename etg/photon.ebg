@@ -1,0 +1,28 @@
+eventStart(float damage = 10, float velocity = 20, float length = 10, float duration = 9999)
+
+maxFrequency(70)
+
+label(torp)
+    subTextureDWORD(ETG\textures\bullets\photon01,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\photon02,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\photon03,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\photon04,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\photon05,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\photon06,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+
+int 4294967295
+
+
+
+startup
+{
+
+
+    setDefaults()
+    setScale(200)
+    setAnimation(torp, 20, 100)
+    setLighting(0)
+    setIllum(1)
+    setLifespan(1000)
+    torp <- createSprites(1,0)
+}

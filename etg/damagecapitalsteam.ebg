@@ -1,0 +1,212 @@
+#line 1 "d:\\homeworld\\Datasrc\\ETG\\damage\\heavy\\damageCapitalSteam.etg"
+#line 1 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 112 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "d:\\homeworld\\Datasrc\\ETG\\damage\\heavy\\damageCapitalSteam.etg"
+eventStart(float shipSize = 100)
+
+
+
+maxFrequency(15)
+
+
+
+
+
+variable
+{
+float damageScale
+float val
+
+int sprites
+float modScale
+RGBA modColorA
+RGBA midColorA
+RGBA endColorA
+}
+
+startup
+{
+    setDefaults()
+
+
+    
+    
+    
+    damageScale <- fdiv(shipSize, 200)
+    if(damageScale < 0.5)
+    {
+        damageScale <- 0.5
+    }
+
+
+    setOffsetTheta([(0) * 2.0 * 3.14159265359789 / 360.0])
+        val <- fmult(damageScale, 4)
+    setDeltaR(val, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        val <- fmult(damageScale, 2)
+    setDeltaRDist(val, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        val <- fmult(damageScale, 7)
+    setVelR(val)
+        val <- fmult(damageScale, 3)
+    setVelRDist(val)
+        val <- fmult(damageScale, 25)
+    setVelLOF(val)
+        val <- fmult(damageScale, 5)
+    setVelLOFDist(val)
+    setVelocityInWorldSpace(1)
+    setIsWorldSpace(0)
+
+        val <- fmult(damageScale, 60)
+    setScale(val)
+        val <- fmult(damageScale, 20)
+    setScaleDist(val)
+        val <- fmult(damageScale, 20)
+    setDeltaScale(val)
+        val <- fmult(damageScale, 2)
+    setDeltaScaleDist(val)
+    setColorA([255 + 255 * 256 + 255 * 65536 + 40 * 65536 * 256])
+        modColorA <- [255 + 255 * 256 + 255 * 65536 + 40 * 65536 * 256]
+        midColorA <- [255 + 255 * 256 + 255 * 65536 + 40 * 65536 * 256]
+        endColorA <- [255 + 255 * 256 + 255 * 65536 + 0 * 65536 * 256]
+    setAddColor(0.12, 0.06, 0.15)
+    setAddColorDist(0.03, 0.02, 0.05)
+    setLifespan(3)
+    setTexture(textures\glow32, 0, 0, 32, 32)
+    sprites <- createSprites(3, 1)
+    
+    
+}
+
+
+timeIndex
+{
+    timeBlock(modColorA)
+    {
+        time(2, midColorA)
+        time(3, endColorA)
+    }
+}
+
+eachFrame
+{
+    modifyColorA(sprites, modColorA)
+}
+
+
+eachFrame
+{
+    at(3)
+    {
+        delete()
+    }
+}

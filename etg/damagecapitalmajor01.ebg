@@ -1,0 +1,172 @@
+#line 1 "d:\\homeworld\\Datasrc\\ETG\\damage\\heavy\\damageCapitalMajor01.etg"
+#line 1 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 112 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "d:\\homeworld\\Datasrc\\ETG\\damage\\heavy\\damageCapitalMajor01.etg"
+eventStart(float damage, float size)
+
+
+
+maxFrequency(15)
+
+variable
+{
+
+}
+
+startup
+{
+
+    setDefaults()
+    setEffDefaults()
+
+    
+    
+    
+    
+    
+    
+    
+    
+    spawn(damageCapitalPuff.ebg, size)
+
+    
+    
+    
+
+
+
+
+
+
+
+}
+
+eachFrame
+{
+    every(0.5)
+    {
+        setDefaults()
+        setEffDefaults()
+        spawn(damageCapitalSteam01.ebg, size)
+    }
+}
+
+eachFrame
+{
+    at(0.5)
+    {
+        damageDone()
+    }
+}
+

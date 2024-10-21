@@ -1,0 +1,85 @@
+#line 1 "D:\\Homeworld\\DataSrc\\ETG\\death\\DestDamageLarge\\DDLmultiFireball.etg"
+#line 1 "D:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 111 "D:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "D:\\Homeworld\\DataSrc\\ETG\\death\\DestDamageLarge\\DDLmultiFireball.etg"
+#line 1 "D:\\Homeworld\\src\\game\\specialeventdefs.h"
+
+#line 1 "D:\\Homeworld\\DataSrc\\ETG\\death\\DestDamageLarge\\DDLmultiFireball.etg"
+eventStart(float damage = 20, int fatal = 0)
+
+maxFrequency(50)
+
+variable
+{
+float shockSize
+float shockSizeRate
+float size
+float fireballSize
+float fireballSpeed
+
+float firePuffSize
+}
+
+startup
+{
+    setDefaults()
+    setEffDefaults()
+        size <- 20
+}
+
+eachFrame
+{
+    at(0.1)
+    {
+    
+    setDefaults()
+        shockSize <- fmult(size, 5)
+        shockSizeRate <- fmult(size, 4)
+    setScale(shockSize)
+    setDeltaScale(shockSizeRate)
+    setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+    setDeltaColorA(0, 0, 0, -255)
+    setAddColor(1.0, 0.45, 0.2)
+    setLighting(0)
+    setIllum(1)
+    setLifespan(1)
+    setTexture(textures\glow32 0, 0, 32, 32)
+    createSprites(1, 0)
+
+
+    
+    setDefaults()
+
+        fireballSize <- fmult(size, 0.65)
+        fireballSpeed <- fmult(size, 2)
+    
+    setDeltaLOFDist(fireballSize)
+    
+    setDeltaR(fireballSize, [(360) * 2.0 * 3.14159265359789 / 360.0])
+    setDeltaRDist(0, [(360) * 2.0 * 3.14159265359789 / 360.0])
+    setVelR(fireballSpeed)
+    setVelLOFDist(fireballSpeed)
+    setLifespan(2)
+        firePuffSize <- fmult(size, 0.7)
+    
+    createEffects(B5fireball.ebg, 2, 1, firePuffSize)
+    }
+
+    
+    at(0.1)
+    {
+    setDefaults()
+    spawn(B5sparksLite.ebg, size)
+    }
+
+}
+
+eachFrame
+{
+    at(2)
+    {
+        delete()
+    }
+}

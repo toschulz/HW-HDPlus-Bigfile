@@ -1,0 +1,225 @@
+#line 1 "d:\\homeworld\\Datasrc\\ETG\\damage\\radiation\\damageRadiation.etg"
+#line 1 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 112 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "d:\\homeworld\\Datasrc\\ETG\\damage\\radiation\\damageRadiation.etg"
+eventStart(float size = 50, float maxDelay = 5.0)
+
+
+
+
+
+
+maxFrequency(15)
+
+variable
+{
+    float sparkSize
+    float sparkSpeed
+    float sparkSpeedLOF
+    float sparkSpeedDist
+    float sparkLength
+    float sparkLengthDist
+    float randomScalar
+    float sparkDuration
+    int   sparks
+    
+
+    float delay = 0.0
+    float endTime
+
+    
+    float sparkLifespan2= 0.24
+}
+
+startup
+{
+    if (maxDelay > 0.0)
+    {
+        delay <- frandom(0.0, maxDelay)
+    }
+    endTime <- fadd(3, delay)
+    
+    sparkLifespan2 <- fadd(sparkLifespan2, delay)
+}
+
+
+eachFrame
+{
+    at(delay)
+    {
+        setDefaults()
+        setScale(1)
+            sparkSize <- fmult(size, 0.3)
+            sparkSpeedLOF <- fmult(size, 7.0)
+            sparkSpeed <- fmult(size, 7.0)
+            sparkSpeedDist <- fmult(size, 1.5)
+        setDeltaLOFDist(sparkSize)
+        setDeltaR(sparkSize, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setDeltaRDist(0, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setVelLOFDist(sparkSpeedLOF)
+        setVelR(sparkSpeed)
+        setVelRDist(sparkSpeedDist)
+        setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+        setDeltaColorA(0.0, 0.0, [-0.5 / 0.24], 0);
+            
+
+            
+            
+            randomScalar <- frandom(0.5, 1.5)
+            sparkDuration <- 3
+            sparkDuration <- fmult(randomScalar, sparkDuration)
+
+        setLifespan(sparkDuration)
+        setIsWorldSpace(1)
+        sparks <- createLines(9,0)
+
+        
+        {
+            sparkLength <- fmult(size, 0.1)
+            sparkLengthDist <- fmult(size, 0.02)
+
+            setLength(sparkLength)
+            setLengthDist(sparkLengthDist)
+        }
+    }
+
+    at(sparkLifespan2)
+    {
+        modifyDeltaColor(sparks, 0.0, [-0.5 / (1.24 - 0.24)], [-0.5 / (1.24 - 0.24)], [-1 / (1.24 - 0.24)])
+    }
+    at(endTime)
+    {
+        delete()
+    }
+    
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,256 @@
+//
+//***Traders***
+//
+
+//deaths
+
+setDeathEvent           Traders,CLASS_Fighter,damage,DestDamageSmall.ebg
+setDeathEvent           Traders,CLASS_Fighter,projectile,DestProjectileSmall.ebg
+setDeathEvent           Traders,CLASS_Fighter,beam,DestBeam.ebg
+//setDeathEvent           Traders,CLASS_Fighter,collision,
+//setDeathEvent           Traders,CLASS_Fighter,special,
+
+setDeathEvent           Traders,CLASS_Corvette,damage,DestDamageSmall.ebg
+setDeathEvent           Traders,CLASS_Corvette,projectile,DestProjectileSmall.ebg
+setDeathEvent           Traders,CLASS_Corvette,beam,DestBeam.ebg
+//setDeathEvent           Traders,CLASS_Corvette,collision,
+//setDeathEvent           Traders,CLASS_Corvette,special,
+
+setDeathEvent           Traders,CLASS_Frigate,damage,DestDamageSmall.ebg
+setDeathEvent           Traders,CLASS_Frigate,projectile,DestProjectileSmall.ebg
+setDeathEvent           Traders,CLASS_Frigate,beam,DestBeam.ebg
+//setDeathEvent           Traders,CLASS_Frigate,collision,
+//setDeathEvent           Traders,CLASS_Frigate,special,
+
+setDeathEvent           Traders,CLASS_Destroyer,damage,DestDamageLarge.ebg
+setDeathEvent           Traders,CLASS_Destroyer,projectile,DestProjectileLarge.ebg
+setDeathEvent           Traders,CLASS_Destroyer,beam,DestBeam.ebg
+//setDeathEvent           Traders,CLASS_Destroyer,collision,
+//setDeathEvent           Traders,CLASS_Destroyer,special,
+
+setDeathEvent           Traders,CLASS_Carrier,damage,DestDamageLarge.ebg
+setDeathEvent           Traders,CLASS_Carrier,projectile,DestProjectileLarge.ebg
+setDeathEvent           Traders,CLASS_Carrier,beam,DestBeam.ebg
+//setDeathEvent           Traders,CLASS_Carrier,collision,
+//setDeathEvent           Traders,CLASS_Carrier,special,
+
+setDeathEvent           Traders,CLASS_HeavyCruiser,damage,DestDamageLarge.ebg
+setDeathEvent           Traders,CLASS_HeavyCruiser,projectile,DestProjectileLarge.ebg
+setDeathEvent           Traders,CLASS_HeavyCruiser,beam,DestBeam.ebg
+//setDeathEvent           Traders,CLASS_HeavyCruiser,collision,
+//setDeathEvent           Traders,CLASS_HeavyCruiser,special,
+
+setDeathEvent           Traders,CLASS_Mothership,damage,DestBeam.ebg
+setDeathEvent           Traders,CLASS_Mothership,projectile,DestBeam.ebg
+setDeathEvent           Traders,CLASS_Mothership,beam,DestBeam.ebg
+//setDeathEvent           Traders,CLASS_Mothership,collision,
+//setDeathEvent           Traders,CLASS_Mothership,special,
+
+setDeathEvent           Traders,CLASS_Resource,damage,DestDamageLarge.ebg
+setDeathEvent           Traders,CLASS_Resource,projectile,DestProjectileLarge.ebg
+setDeathEvent           Traders,CLASS_Resource,beam,DestBeam.ebg
+//setDeathEvent           Traders,CLASS_Resource,collision,
+//setDeathEvent           Traders,CLASS_Resource,special,
+
+setDeathEvent           Traders,CLASS_NonCombat,damage,DestDamageLarge.ebg
+setDeathEvent           Traders,CLASS_NonCombat,projectile,DestProjectileLarge.ebg
+setDeathEvent           Traders,CLASS_NonCombat,beam,DestBeam.ebg
+//setDeathEvent           Traders,CLASS_NonCombat,collision,
+//setDeathEvent           Traders,CLASS_NonCombat,special,
+
+
+//firing
+
+setFireEvent            Traders,GS_VeryLargeIonCannon,FireIonCannonVeryLarge.ebg
+    setFireEvent            Traders,GS_VeryLargeIonCannon,FireIonCannonVeryLarge01.ebg
+    setFireEvent            Traders,GS_VeryLargeIonCannon,FireIonCannonVeryLarge02.ebg
+    setFireEvent            Traders,GS_VeryLargeIonCannon,FireIonCannonVeryLarge03.ebg
+setFireEvent            Traders,GS_LargeIonCannon,FireIonCannonLarge.ebg
+    setFireEvent            Traders,GS_LargeIonCannon,FireIonCannonLarge01.ebg
+    setFireEvent            Traders,GS_LargeIonCannon,FireIonCannonLarge02.ebg
+    setFireEvent            Traders,GS_LargeIonCannon,FireIonCannonLarge03.ebg
+setFireEvent            Traders,GS_MediumIonCannon,FireIonCannonMedium.ebg
+    setFireEvent            Traders,GS_MediumIonCannon,FireIonCannonMedium01.ebg
+    setFireEvent            Traders,GS_MediumIonCannon,FireIonCannonMedium02.ebg
+    setFireEvent            Traders,GS_MediumIonCannon,FireIonCannonMedium03.ebg
+setFireEvent            Traders,GS_SmallIonCannon,FireIonCannonSmall.ebg
+    setFireEvent            Traders,GS_SmallIonCannon,FireIonCannonSmall01.ebg
+    setFireEvent            Traders,GS_SmallIonCannon,FireIonCannonSmall02.ebg
+    setFireEvent            Traders,GS_SmallIonCannon,FireIonCannonSmall03.ebg
+
+setFireEvent            Traders,GS_MediumProjectile,FireProjectileMedium.ebg
+    setFireEvent            Traders,GS_MediumProjectile,FireProjectileMedium01.ebg
+    setFireEvent            Traders,GS_MediumProjectile,FireProjectileMedium02.ebg
+    setFireEvent            Traders,GS_MediumProjectile,FireProjectileMedium03.ebg
+setFireEvent            Traders,GS_SmallProjectile,FireEnergy.ebg
+
+setFireEvent            Traders,GS_VeryLargeEnergyCannon,FireEnergyVeryLarge.ebg
+    setFireEvent            Traders,GS_VeryLargeEnergyCannon,FireEnergyVeryLarge01.ebg
+    setFireEvent            Traders,GS_VeryLargeEnergyCannon,FireEnergyVeryLarge02.ebg
+    setFireEvent            Traders,GS_VeryLargeEnergyCannon,FireEnergyVeryLarge03.ebg
+setFireEvent            Traders,GS_LargeEnergyCannon,FireEnergyLarge.ebg
+    setFireEvent            Traders,GS_LargeEnergyCannon,FireEnergyLarge01.ebg
+    setFireEvent            Traders,GS_LargeEnergyCannon,FireEnergyLarge02.ebg
+    setFireEvent            Traders,GS_LargeEnergyCannon,FireEnergyLarge03.ebg
+setFireEvent            Traders,GS_MediumEnergyCannon,FireEnergyMedium.ebg
+    setFireEvent            Traders,GS_MediumEnergyCannon,FireEnergyMedium01.ebg
+    setFireEvent            Traders,GS_MediumEnergyCannon,FireEnergyMedium02.ebg
+    setFireEvent            Traders,GS_MediumEnergyCannon,FireEnergyMedium03.ebg
+setFireEvent            Traders,GS_SmallEnergyCannon,FireEnergySmall.ebg
+    setFireEvent            Traders,GS_SmallEnergyCannon,FireEnergySmall01.ebg
+    setFireEvent            Traders,GS_SmallEnergyCannon,FireEnergySmall02.ebg
+    setFireEvent            Traders,GS_SmallEnergyCannon,FireEnergySmall03.ebg
+
+setFireEvent            Traders,GS_MineLauncher,FireMines.ebg
+    setFireEvent            Traders,GS_MineLauncher,FireMines01.ebg
+    setFireEvent            Traders,GS_MineLauncher,FireMines02.ebg
+    setFireEvent            Traders,GS_MineLauncher,FireMines03.ebg
+setFireEvent            Traders,GS_MissleLauncher,FireMissiles.ebg
+    setFireEvent            Traders,GS_MissleLauncher,FireMissiles01.ebg
+    setFireEvent            Traders,GS_MissleLauncher,FireMissiles02.ebg
+    setFireEvent            Traders,GS_MissleLauncher,FireMissiles03.ebg
+setFireEvent            Traders,GS_MediumPlasmaBomb,FirePlasmaMedium.ebg
+    setFireEvent            Traders,GS_MediumPlasmaBomb,FirePlasmaMedium01.ebg
+    setFireEvent            Traders,GS_MediumPlasmaBomb,FirePlasmaMedium02.ebg
+    setFireEvent            Traders,GS_MediumPlasmaBomb,FirePlasmaMedium03.ebg
+setFireEvent            Traders,GS_VeryLargePlasmaBomb,FireEnergy.ebg
+setFireEvent            Traders,GS_SmallPlasmaBomb,FirePlasmaSmall.ebg
+    setFireEvent            Traders,GS_SmallPlasmaBomb,FirePlasmaSmall01.ebg
+    setFireEvent            Traders,GS_SmallPlasmaBomb,FirePlasmaSmall02.ebg
+    setFireEvent            Traders,GS_SmallPlasmaBomb,FirePlasmaSmall03.ebg
+
+
+//hits
+
+setHitEvent             Traders,GS_VeryLargeIonCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_VeryLargeIonCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_VeryLargeIonCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_VeryLargeIonCannon,HitEnergy.ebg
+setHitEvent             Traders,GS_LargeIonCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_LargeIonCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_LargeIonCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_LargeIonCannon,HitEnergy.ebg
+setHitEvent             Traders,GS_MediumIonCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_MediumIonCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_MediumIonCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_MediumIonCannon,HitEnergy.ebg
+setHitEvent             Traders,GS_SmallIonCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_SmallIonCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_SmallIonCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_SmallIonCannon,HitEnergy.ebg
+
+setHitEvent             Traders,GS_MediumProjectile,HitProjectile.ebg
+    setHitEvent             Traders,GS_MediumProjectile,HitProjectile.ebg
+    setHitEvent             Traders,GS_MediumProjectile,HitProjectile.ebg
+    setHitEvent             Traders,GS_MediumProjectile,HitProjectile.ebg
+setHitEvent             Traders,GS_SmallProjectile,HitProjectile.ebg
+    setHitEvent             Traders,GS_SmallProjectile,HitProjectile.ebg
+    setHitEvent             Traders,GS_SmallProjectile,HitProjectile.ebg
+    setHitEvent             Traders,GS_SmallProjectile,HitProjectile.ebg
+
+setHitEvent             Traders,GS_VeryLargeEnergyCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_VeryLargeEnergyCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_VeryLargeEnergyCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_VeryLargeEnergyCannon,HitEnergy.ebg
+setHitEvent             Traders,GS_LargeEnergyCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_LargeEnergyCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_LargeEnergyCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_LargeEnergyCannon,HitEnergy.ebg
+setHitEvent             Traders,GS_MediumEnergyCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_MediumEnergyCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_MediumEnergyCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_MediumEnergyCannon,HitEnergy.ebg
+setHitEvent             Traders,GS_SmallEnergyCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_SmallEnergyCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_SmallEnergyCannon,HitEnergy.ebg
+    setHitEvent             Traders,GS_SmallEnergyCannon,HitEnergy.ebg
+
+setHitEvent             Traders,GS_MineLauncher,HitMines.ebg
+    setHitEvent             Traders,GS_MineLauncher,HitMines.ebg
+    setHitEvent             Traders,GS_MineLauncher,HitMines.ebg
+    setHitEvent             Traders,GS_MineLauncher,HitMines.ebg
+setHitEvent             Traders,GS_MissleLauncher,HitMines.ebg
+    setHitEvent             Traders,GS_MissleLauncher,HitMines.ebg
+    setHitEvent             Traders,GS_MissleLauncher,HitMines.ebg
+    setHitEvent             Traders,GS_MissleLauncher,HitMines.ebg
+setHitEvent             Traders,GS_MediumPlasmaBomb,HitMines.ebg
+    setHitEvent             Traders,GS_MediumPlasmaBomb,HitMines.ebg
+    setHitEvent             Traders,GS_MediumPlasmaBomb,HitMines.ebg
+    setHitEvent             Traders,GS_MediumPlasmaBomb,HitMines.ebg
+setHitEvent             Traders,GS_VeryLargePlasmaBomb,HitMines.ebg
+    setHitEvent             Traders,GS_VeryLargePlasmaBomb,HitMines.ebg
+    setHitEvent             Traders,GS_VeryLargePlasmaBomb,HitMines.ebg
+    setHitEvent             Traders,GS_VeryLargePlasmaBomb,HitMines.ebg
+setHitEvent             Traders,GS_SmallPlasmaBomb,HitMines.ebg
+    setHitEvent             Traders,GS_SmallPlasmaBomb,HitMines.ebg
+    setHitEvent             Traders,GS_SmallPlasmaBomb,HitMines.ebg
+    setHitEvent             Traders,GS_SmallPlasmaBomb,HitMines.ebg
+
+
+
+
+
+
+
+setBulletEffect         Traders,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+    setBulletEffect         Traders,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+    setBulletEffect         Traders,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+setBulletEffect         Traders,GS_MediumPlasmaBomb,BulletPlasmaBomb.ebg
+    setBulletEffect         Traders,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+    setBulletEffect         Traders,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+setBulletEffect         Traders,GS_LargePlasmaBomb,BulletPlasmaBomb.ebg
+    setBulletEffect         Traders,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+    setBulletEffect         Traders,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+setBulletEffect         Traders,GS_VeryLargePlasmaBomb,BulletPlasmaBomb.ebg
+    setBulletEffect         Traders,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+    setBulletEffect         Traders,GS_SmallPlasmaBomb,BulletPlasmaBomb.ebg
+
+setBulletEffect         Traders,GS_VeryLargeIonCannon,BulletIonRayTraders.ebg
+    setBulletEffect         Traders,GS_VeryLargeIonCannon,BulletIonRayTraders.ebg
+    setBulletEffect         Traders,GS_VeryLargeIonCannon,BulletIonRayTraders.ebg
+    setBulletEffect         Traders,GS_VeryLargeIonCannon,BulletIonRayTraders.ebg
+setBulletEffect         Traders,GS_LargeIonCannon,BulletIonRayTraders.ebg
+    setBulletEffect         Traders,GS_LargeIonCannon,BulletIonRayTraders.ebg
+    setBulletEffect         Traders,GS_LargeIonCannon,BulletIonRayTraders.ebg
+    setBulletEffect         Traders,GS_LargeIonCannon,BulletIonRayTraders.ebg
+setBulletEffect         Traders,GS_MediumIonCannon,BulletIonRayTraders.ebg
+    setBulletEffect         Traders,GS_MediumIonCannon,BulletIonRayTraders.ebg
+    setBulletEffect         Traders,GS_MediumIonCannon,BulletIonRayTraders.ebg
+    setBulletEffect         Traders,GS_MediumIonCannon,BulletIonRayTraders.ebg
+setBulletEffect         Traders,GS_SmallIonCannon,BulletIonRayTraders.ebg
+    setBulletEffect         Traders,GS_SmallIonCannon,BulletIonRayTraders.ebg
+    setBulletEffect         Traders,GS_SmallIonCannon,BulletIonRayTraders.ebg
+    setBulletEffect         Traders,GS_SmallIonCannon,BulletIonRayTraders.ebg
+
+//setBulletEffect         Traders,GS_SmallEnergyCannon,BulletEnergy.ebg
+setBulletEffect         Traders,GS_VeryLargeEnergyCannon,BulletProjectile.ebg
+    setBulletEffect         Traders,GS_VeryLargeEnergyCannon,BulletProjectile.ebg
+    setBulletEffect         Traders,GS_VeryLargeEnergyCannon,BulletProjectile.ebg
+setBulletEffect         Traders,GS_LargeEnergyCannon,BulletProjectile.ebg
+    setBulletEffect         Traders,GS_LargeEnergyCannon,BulletProjectile.ebg
+    setBulletEffect         Traders,GS_LargeEnergyCannon,BulletProjectile.ebg
+setBulletEffect         Traders,GS_MediumEnergyCannon,BulletProjectile.ebg
+    setBulletEffect         Traders,GS_MediumEnergyCannon,BulletProjectile.ebg
+    setBulletEffect         Traders,GS_MediumEnergyCannon,BulletProjectile.ebg
+setBulletEffect         Traders,GS_SmallEnergyCannon,BulletProjectile.ebg
+    setBulletEffect         Traders,GS_SmallEnergyCannon,BulletProjectile.ebg
+    setBulletEffect         Traders,GS_SmallEnergyCannon,BulletProjectile.ebg
+
+setBulletEffect         Traders,GS_MediumProjectile,BulletProjectile.ebg
+
+
+setBulletColor         Traders,GS_SmallPlasmaBomb,100,184,255
+setBulletColor         Traders,GS_MediumPlasmaBomb,100,184,255
+setBulletColor         Traders,GS_LargePlasmaBomb,100,184,255
+setBulletColor         Traders,GS_VeryLargePlasmaBomb,100,184,255
+setBulletColor         Traders,GS_VeryLargePlasmaBomb,100,184,255
+
+setBulletColor         Traders,GS_VeryLargeIonCannon,255,100,0
+setBulletColor         Traders,GS_LargeIonCannon,255,100,0
+setBulletColor         Traders,GS_MediumIonCannon,255,100,0
+setBulletColor         Traders,GS_SmallIonCannon,255,100,0
+
+
+
+
+

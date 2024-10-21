@@ -1,0 +1,182 @@
+#line 1 "D:\\Homeworld\\DataSrc\\ETG\\death\\DestDamageSmall\\DDSfireball.etg"
+#line 1 "D:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 111 "D:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "D:\\Homeworld\\DataSrc\\ETG\\death\\DestDamageSmall\\DDSfireball.etg"
+#line 1 "D:\\Homeworld\\src\\game\\specialeventdefs.h"
+
+#line 1 "D:\\Homeworld\\DataSrc\\ETG\\death\\DestDamageSmall\\DDSfireball.etg"
+
+eventStart(float size = 20)
+
+maxFrequency(260)
+
+label(fireball00)
+    subTextureDWORD(ETG\textures\fire00,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\fire01,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire02,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire03,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire04,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire05,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire06,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire07,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire08,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire09,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire10,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire11,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire12,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire13,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire14,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire15,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire16,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire17,[32 * 16777216 + 32 * 65536 + 0 * 256 + 0], 2)
+int 4294967295
+
+label(fireball01)
+    subTextureDWORD(ETG\textures\fire00,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\fire01,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire02,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire03,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire04,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire05,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire06,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire07,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire08,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire09,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire10,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire11,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire12,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire13,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire14,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire15,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire16,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\fire17,[64 * 16777216 + 32 * 65536 + 32 * 256 + 0], 2)
+int 4294967295
+
+label(fireball02)
+    subTextureDWORD(ETG\textures\fire00,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 1)
+    subTextureDWORD(ETG\textures\fire01,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 0)
+    subTextureDWORD(ETG\textures\fire02,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 0)
+    subTextureDWORD(ETG\textures\fire03,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 0)
+    subTextureDWORD(ETG\textures\fire04,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 0)
+    subTextureDWORD(ETG\textures\fire05,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 0)
+    subTextureDWORD(ETG\textures\fire06,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 0)
+    subTextureDWORD(ETG\textures\fire07,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 0)
+    subTextureDWORD(ETG\textures\fire08,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 0)
+    subTextureDWORD(ETG\textures\fire09,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 0)
+    subTextureDWORD(ETG\textures\fire10,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 0)
+    subTextureDWORD(ETG\textures\fire11,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 0)
+    subTextureDWORD(ETG\textures\fire12,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 0)
+    subTextureDWORD(ETG\textures\fire13,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 0)
+    subTextureDWORD(ETG\textures\fire14,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 0)
+    subTextureDWORD(ETG\textures\fire15,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 0)
+    subTextureDWORD(ETG\textures\fire16,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 0)
+    subTextureDWORD(ETG\textures\fire17,[64 * 16777216 + 64 * 65536 + 32 * 256 + 32], 2)
+int 4294967295
+
+variable
+{
+float spriteSize
+float spriteSizeDist
+float spriteSizeRate
+float spriteAngle
+float offset
+
+int   sprites
+RGBA  modColorA
+RGBA  colA1
+RGBA  colA2
+RGB   modAddColor
+}
+
+startup
+{
+    setDefaults()
+    setDrag(0.1)
+        offset <- fmult(-1, size)
+    setOffsetLOF(offset)
+        spriteSize <- fmult(size, 2)
+        spriteSizeDist <- fmult(size, 0.5)
+        spriteSizeRate <- fmult(size, 2)
+        spriteAngle <- frandom([(0.1) * 2.0 * 3.14159265359789 / 360.0], [(360) * 2.0 * 3.14159265359789 / 360.0])
+    setScale(spriteSize)
+    setScaleDist(spriteSizeDist)
+    setDeltaScale(spriteSizeRate)
+    setSpriteRot(spriteAngle)
+    alternate
+    {
+        alt(1):
+        setSpriteDeltaRot(-2)
+        alt(1):
+        setSpriteDeltaRot(2)
+    }
+    setColorA([255 + 255 * 256 + 255 * 65536 + 55 * 65536 * 256])
+        modColorA <- [255 + 255 * 256 + 255 * 65536 + 245 * 65536 * 256]
+    setColorADist(0, 0, 0, 0)
+    alternate
+    {
+        alt(1):
+        setAddColor(1.0, 0.8, 0.6)
+        modAddColor <- [255 + 200 * 256 + 150 * 65536]
+
+        alt(1):
+        setAddColor(0.8, 0.8, 0.6)
+        modAddColor <- [180 + 180 * 256 + 100 * 65536]
+
+        alt(1):
+        setAddColor(0.6, 0.5, 0.3)
+        modAddColor <- [150 + 100 * 256 + 80 * 65536]
+
+    }
+            alternate
+    {
+        alt(1):
+        setAnimation(fireball00, 10, 10)
+        alt(1):
+        setAnimation(fireball01, 10, 10)
+        alt(1):
+        setAnimation(fireball02, 10, 10)
+    }
+    setLighting(0)
+    setIllum(1)
+    setIsWorldSpace(1)
+    setLifespan(2)
+    sprites <- createSprites(3,1)
+
+        colA1 <- [255 + 255 * 256 + 255 * 65536 + 245 * 65536 * 256]
+        colA2 <- [255 + 255 * 256 + 255 * 65536 + 0 * 65536 * 256]
+
+}
+
+eachFrame
+{
+    modifyColorA(sprites, modColorA)
+    modifyAddColor(sprites, modAddColor)
+}
+
+timeIndex
+{
+    timeBlock(modColorA)
+    {
+    time(1, colA1)
+    time(2, colA2)
+    }
+
+    timeBlock(modAddColor)
+    {
+    time(1.5, 0.0, 0.0, 0.0)
+    time(2, 0.0, 0.0, 0.0)
+    }
+}
+
+
+
+
+eachFrame
+{
+    at(2)
+    {
+    delete()
+    }
+}

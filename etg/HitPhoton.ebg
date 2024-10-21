@@ -1,0 +1,208 @@
+#line 1 "d:\\Homeworld\\Datasrc\\ETG\\hit\\Plasma\\HitPlasma.etg"
+#line 1 "d:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 112 "d:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "d:\\Homeworld\\Datasrc\\ETG\\hit\\Plasma\\HitPlasma.etg"
+eventStart(float damage = 20, int fatal = 0)
+
+#line 1 "d:\\Homeworld\\src\\game\\soundEventDefs.h"
+
+#line 127 "d:\\Homeworld\\src\\game\\soundEventDefs.h"
+#line 11 "d:\\Homeworld\\Datasrc\\ETG\\hit\\Plasma\\HitPlasma.etg"
+
+label(fireball)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions02,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions03,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions04,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions05,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions06,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions07,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions08,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions09,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions10,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions11,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions12,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions13,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions14,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions15,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions16,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions17,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions18,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions19,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions20,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions21,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions22,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\explosions\B5Explosions23,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 2)
+int 4294967295
+
+maxFrequency(100)
+
+variable
+{
+
+int notNeededDebugOnly
+
+float masterscale = 1
+float sparkSize
+float sparkSpeed
+float sparkSpeedLOF
+float sparkSpeedDist
+float sparkLength
+float sparkLengthDist
+float temp
+
+float fireballSize
+float fireballSpeed
+float firePuffSize
+
+float spriteSize
+float spriteSizeDist
+float spriteAngle
+float offset
+
+int   sprites
+RGBA  modColorA
+RGBA  colA1
+RGBA  colA2
+
+int Boom
+RGBA Color0
+RGBA Color1
+RGBA Color2
+}
+
+startup
+{
+
+
+
+
+        temp <- fmult(damage, 0.0004)
+        masterscale <- fadd(temp, 0.7)
+
+    playSound([(3 + 16384)])
+    
+   setDefaults()
+        spriteSize <- fmult(masterscale, 180)
+        spriteSizeDist <- fmult(masterscale, 40)
+        spriteAngle <- frandom([(0.1) * 2.0 * 3.14159265359789 / 360.0], [(360) * 2.0 * 3.14159265359789 / 360.0])
+    setScale(spriteSize)
+    setScaleDist(spriteSizeDist)
+    setSpriteRot(spriteAngle)
+    alternate
+    {
+        alt(1):
+        setSpriteDeltaRot(-0.1)
+        alt(1):
+        setSpriteDeltaRot(0.1)
+    }
+    setColorA([255 + 200 * 256 + 200 * 65536 + 245 * 65536 * 256])
+        modColorA <- [255 + 200 * 256 + 200 * 65536 + 245 * 65536 * 256]
+        colA1 <- [255 + 200 * 256 + 200 * 65536 + 245 * 65536 * 256]
+        colA2 <- [255 + 150 * 256 + 100 * 65536 + 245 * 65536 * 256]
+   
+    setAnimation(fireball, 12, 10)
+  
+    setLighting(0)
+    setIllum(1)
+    setIsWorldSpace(1)
+    setLifespan(2)
+    sprites <- createSprites(1,0)
+
+    setDefaults()
+        temp <- fmult(masterscale, 270)
+    setScale(temp)
+        temp <- fmult(masterscale, 40)
+    setDeltaScale(temp)
+    setColorA([255 + 255 * 256 + 255 * 65536 + 200 * 65536 * 256])
+        Color0 <- [255 + 255 * 256 + 255 * 65536 + 200 * 65536 * 256]
+        Color1 <- [255 + 160 * 256 + 20 * 65536 + 200 * 65536 * 256]
+        Color2 <- [255 + 70 * 256 + 0 * 65536 + 0 * 65536 * 256]
+    setTexture(textures\glow32 0, 0, 32, 32)
+    setAddColor(0.7, 0.3, 0.3)
+    setLighting(0)
+    setIllum(1)
+    setOffsetLOF(2)
+    setLifespan(1.0)
+    Boom <- createSprites(1, 0)
+
+    setDefaults()
+    setScale(2)
+        sparkSize <- fmult(masterscale, 30)
+        sparkSpeed <- fmult(masterscale, 370)
+        sparkSpeedLOF <- fmult(masterscale, 280)
+        sparkSpeedDist <- fmult(masterscale, 1)
+    setDeltaLOFDist(sparkSize)
+    setDeltaR(sparkSize, [(360) * 2.0 * 3.14159265359789 / 360.0])
+    setDeltaRDist(0, [(360) * 2.0 * 3.14159265359789 / 360.0])
+    setVelLOFDist(sparkSpeedLOF)
+    setVelR(sparkSpeed)
+    setVelRDist(sparkSpeedDist)
+    setColorA([255 + 132 * 256 + 0 * 65536 + 180 * 65536 * 256])
+    setDeltaColorA(0, 0, 0, -260)
+    setLifespan(0.7)
+    setIsWorldSpace(1)
+    setVelocityInWorldSpace(1)
+    createLines(12,2)
+    {
+        sparkLength <- fmult(10, masterscale)
+        sparkLengthDist <- fmult(masterscale, 1)
+        setLength(sparkLength)
+        setLengthDist(sparkLengthDist)
+    }
+
+    setDefaults()
+    setScale(2)
+        sparkSize <- fmult(masterscale, 30)
+        sparkSpeed <- fmult(masterscale, 220)
+        sparkSpeedLOF <- fmult(masterscale, 310)
+        sparkSpeedDist <- fmult(masterscale, 1)
+    setDeltaLOFDist(sparkSize)
+    setDeltaR(sparkSize, [(360) * 2.0 * 3.14159265359789 / 360.0])
+    setDeltaRDist(0, [(360) * 2.0 * 3.14159265359789 / 360.0])
+    setVelLOFDist(sparkSpeedLOF)
+    setVelR(sparkSpeed)
+    setVelRDist(sparkSpeedDist)
+    setColorA([255 + 132 * 256 + 0 * 65536 + 180 * 65536 * 256])
+    setDeltaColorA(0, 0, 0, -260)
+    setLifespan(0.7)
+    setIsWorldSpace(1)
+    setVelocityInWorldSpace(1)
+    createLines(14,3)
+    {
+        sparkLength <- fmult(7, masterscale)
+        sparkLengthDist <- fmult(masterscale, 1)
+        setLength(sparkLength)
+        setLengthDist(sparkLengthDist)
+    }
+}
+
+eachFrame
+{
+modifyColorA(Boom, Color0)
+modifyColorA(sprites, modColorA)
+}
+
+timeIndex
+{
+    timeBlock(Color0)
+    {
+        time(0.4, Color1)
+        time(1.0, Color2)
+    }
+timeBlock(modColorA)
+    {
+    time(1, colA1)
+    time(2, colA2)
+    }
+}
+
+eachFrame
+{
+    
+    at(1.5)
+    {
+        delete()
+    }
+}

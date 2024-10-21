@@ -1,0 +1,47 @@
+
+eventStart(float damage = 10, float velocity = 20, float length = 10)
+particleBlocks([10 * (1 / 0.1)])
+
+label(beamMesh)
+    morphAnimDWORD(ETG\meshes\misc\beamRibbon.geo, 0)
+    morphAnimDWORD(ETG\meshes\misc\beamRibbon01.geo, 1)
+    morphAnimDWORD(ETG\meshes\misc\beamRibbon01.geo, 0)
+    morphAnimDWORD(ETG\meshes\misc\beamRibbon01.geo, 2)
+
+int 4294967295
+
+label(R1beamDummy)
+    subTextureDWORD(ETG\textures\bullets\KushanBeam0,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\KushanBeam1,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\bullets\KushanBeam2,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 2)
+
+	int 4294967295
+
+variable
+{
+float wispSize
+float lifeSpan
+float tLength
+int line
+float beamLength
+}
+startup
+{
+    setDefaults()
+    setLength(length)
+    setScale(81)
+    setMeshAnimation(beamMesh,0.01,0)
+    setMeshStartFrame(1)
+	setAddColor(0.5, 0.0, 0.0)
+    setAnimation(R1beamDummy, 15, 100)
+    setPseudoBillboard(1)
+    setDepthWrite(0)
+    setVelocityInWorldSpace(1)
+    setLifespan(10)
+    line <- createMeshes(1,0)
+}
+eachFrame
+{
+    beamLength <- fadd(length, 100)
+    modifyLength(line, beamLength)
+}

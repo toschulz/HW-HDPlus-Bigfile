@@ -1,0 +1,68 @@
+
+eventStart(float size = 50)
+
+
+variable
+{
+float glowSize
+}
+
+startup
+{
+    setDefaults()
+}
+
+eachFrame
+{
+
+    at(0.01)
+    {
+    playSound([(5 + 4096)])
+    setDefaults()
+        glowSize <- fmult(size, 1.5)
+    setScale(glowSize)
+    setColorA([255 + 255 * 256 + 255 * 65536 + 100 * 65536 * 256])
+    setTexture(textures\glow32, 0, 0, 32, 32)
+    setAddColor(0.8, 0.3, 0.0)
+    setLighting(0)
+    setIllum(1)
+    setLifespan(1.0)
+    createSprites(1, 0)
+
+        setDefaults()
+        spawn(DBboom.ebg, size)
+
+   setDefaults()
+    setScale(size)
+        glowSize <- fmult(size, 30)
+    setDeltaScale(glowSize)
+    setTumble(1,1,1)
+    //setTexture(textures\shockwave128, 0, 0, 128, 128)
+    setMesh(etg\meshes\misc\nonsprite.geo)
+    setAddColor(0.7, 0.7, 1.0)
+    setLighting(0)
+    setIllum(1)
+    setLifespan(1.0)
+    setDepthWrite(0)
+    createMeshes(1, 0) 
+
+    }
+
+    
+}
+
+
+
+eachFrame
+{
+    at(0.6)
+    {
+        hideParentShip()
+        deleteParentShip()
+    }
+
+    at(1)
+    {
+        delete()
+    }
+}

@@ -1,0 +1,61 @@
+#line 1 "d:\\homeworld\\DataSrc\\ETG\\bullet\\BulletIonRay.etg"
+#line 1 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 112 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "d:\\homeworld\\DataSrc\\ETG\\bullet\\BulletIonRay.etg"
+#line 1 "d:\\homeworld\\src\\game\\specialeventdefs.h"
+
+#line 1 "d:\\homeworld\\DataSrc\\ETG\\bullet\\BulletIonRay.etg"
+eventStart(float damage = 10, float velocity = 20, float length = 10)
+
+particleBlocks([10 * (1 / 0.1)])
+
+#line 14 "d:\\homeworld\\DataSrc\\ETG\\bullet\\BulletIonRay.etg"
+#line 1 "d:\\homeworld\\dataSrc\\ETG\\texanims.etg"
+
+label(beamDummy)
+    subTextureDWORD(ETG\textures\bullets\NeutronBeamA,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\NeutronBeamB,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 0)
+    subTextureDWORD(ETG\textures\bullets\NeutronBeamC,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 2)
+int 4294967295
+#line 110 "d:\\homeworld\\dataSrc\\ETG\\texanims.etg"
+
+#line 15 "d:\\homeworld\\DataSrc\\ETG\\bullet\\BulletIonRay.etg"
+
+variable
+{
+float wispSize
+float lifeSpan
+float tLength
+int line
+
+float beamLength
+}
+
+startup
+{
+    setDefaults()
+
+    setLength(length)
+    setScale(34)
+    
+    setMesh(ETG\meshes\misc\beamRibbon.geo)
+ 
+    setAnimation(beamDummy, 15, 100)
+    
+    setPseudoBillboard(1)
+    setDepthWrite(0)
+    setVelocityInWorldSpace(1)
+    setLifespan(10)
+    line <- createMeshes(1,0)
+}
+
+eachFrame
+{
+    fadd(line, 10)
+    modifyLength(line, length)
+  
+}
+
+

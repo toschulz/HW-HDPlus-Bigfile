@@ -1,0 +1,35 @@
+eventStart(float damage = 10, float velocity = 20, float length = 10, float duration = 9999)
+
+maxFrequency(80)
+
+label(torp)
+    subTextureDWORD(ETG\textures\bullets\borg01,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\borg02,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\borg03,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\borg04,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\borg05,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\borg06,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\borg07,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\borg08,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+int 4294967295
+
+
+variable
+{
+float temp
+}
+
+startup
+{
+
+
+    setDefaults()
+	temp <- fmult(damage, 0.008)
+	temp <- fmult(temp, 20)		;TUNE SCALE HERE
+    setScale(temp)
+    setAnimation(torp, 20, 100)
+    setLighting(0)
+    setIllum(1)
+    setLifespan(1000)
+    torp <- createSprites(1,0)
+}

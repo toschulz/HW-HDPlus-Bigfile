@@ -1,0 +1,366 @@
+//
+//load in these here basic effects for testing and defaults
+//most effects are referenced in a later section
+//
+
+NumberEffects           121
+etgHistoryScalarMin     64          //0.25 in fixed-point
+etgSoftwareScalarDamage 0.707       //sqrt(0.5)
+etgSoftwareScalarHit    0.707       //sqrt(0.5)
+etgSoftwareScalarFire   0.866       //sqrt(0.75)
+
+
+
+
+//gravwell
+LoadEffect              gravWellOn.ebg
+LoadEffect              gravWellScan.ebg
+LoadEffect              gravWellUnscan.ebg
+LoadEffect              gravWellScanR1.ebg
+LoadEffect              gravWellUnscanR1.ebg
+
+//damage FX loads
+LoadEffect              damageCapitalPuff.ebg
+LoadEffect              damageCapitalSteam.ebg
+LoadEffect              damageCapitalSteam01.ebg
+LoadEffect              damageEngineSparks.ebg
+LoadEffect              damageEngineSparks01.ebg
+
+//testing hit FX loads
+LoadEffect              HitCannon.ebg
+
+//NIS FX
+LoadEffect              PlanetBurn.ebg
+LoadEffect              GalaxyMapOpen.ebg
+LoadEffect              GalaxyMapClose.ebg
+LoadEffect              HotRaindrop.ebg
+
+//special case mothership death FX
+
+LoadEffect              moshipDust.ebg
+LoadEffect              moshipGlows.ebg
+LoadEffect              moshipSparks.ebg
+LoadEffect              mocapshipDust.ebg
+LoadEffect              mointshipDust.ebg
+LoadEffect              mohitshipDust.ebg
+//this must be explicitly loaded because it's called from KAS
+LoadEffect              damageRadiation.ebg
+
+//'special' effects, add more by changing etg.h, objtypes.h,.c
+//must add the TYPE name and the TYPE define as well as its addition to the
+//STR parser
+setSpecialPurposeEffect         EGT_MINE_WALL_EFFECT, MineFormation.ebg
+        setSpecialPurposeEffect         EGT_MINE_WALL_EFFECT, MineFormation.ebg
+        setSpecialPurposeEffect         EGT_MINE_WALL_EFFECT, MineFormation.ebg
+        setSpecialPurposeEffect         EGT_MINE_WALL_EFFECT, MineFormation.ebg
+        setSpecialPurposeEffect         EGT_MINE_WALL_EFFECT, MineFormation.ebg
+
+setSpecialPurposeEffect         EGT_BURST_CHARING_EFFECT, FirePlasmaMedium.ebg
+        setSpecialPurposeEffect         EGT_BURST_CHARING_EFFECT, FirePlasmaMedium.ebg
+        setSpecialPurposeEffect         EGT_BURST_CHARING_EFFECT, FirePlasmaMedium.ebg
+        setSpecialPurposeEffect         EGT_BURST_CHARING_EFFECT, FirePlasmaMedium.ebg
+        setSpecialPurposeEffect         EGT_BURST_CHARING_EFFECT, FirePlasmaMedium.ebg
+        setSpecialPurposeEffect         EGT_BURST_CHARING_EFFECT, FirePlasmaMedium.ebg
+
+setSpecialPurposeEffect         EGT_BURST_MUZZLE_EFFECT, FireEnergy.ebg
+        setSpecialPurposeEffect         EGT_BURST_MUZZLE_EFFECT, FireEnergy.ebg
+        setSpecialPurposeEffect         EGT_BURST_MUZZLE_EFFECT, FireEnergy.ebg
+        setSpecialPurposeEffect         EGT_BURST_MUZZLE_EFFECT, FireEnergy.ebg
+        setSpecialPurposeEffect         EGT_BURST_MUZZLE_EFFECT, FireEnergy.ebg
+        setSpecialPurposeEffect         EGT_BURST_MUZZLE_EFFECT, FireEnergy.ebg
+
+setSpecialPurposeEffect         EGT_BURST_BULLET_EFFECT, BulletLargePulseBlue.ebg
+        setSpecialPurposeEffect         EGT_BURST_BULLET_EFFECT, BulletLargePulseBlue02.ebg
+        setSpecialPurposeEffect         EGT_BURST_BULLET_EFFECT, BulletLargePulseBlue02.ebg
+        setSpecialPurposeEffect         EGT_BURST_BULLET_EFFECT, BulletLargePulseBlue02.ebg
+        setSpecialPurposeEffect         EGT_BURST_BULLET_EFFECT, BulletLargePulseBlue02.ebg
+        setSpecialPurposeEffect         EGT_BURST_BULLET_EFFECT, BulletLargePulseBlue02.ebg
+
+setSpecialPurposeEffect         EGT_BURST_HIT_EFFECT, HitMediumCannon.ebg
+        setSpecialPurposeEffect         EGT_BURST_HIT_EFFECT, HitMediumCannon.ebg
+        setSpecialPurposeEffect         EGT_BURST_HIT_EFFECT, HitMediumCannon.ebg
+        setSpecialPurposeEffect         EGT_BURST_HIT_EFFECT, HitMediumCannon.ebg
+        setSpecialPurposeEffect         EGT_BURST_HIT_EFFECT, HitMediumCannon.ebg
+        setSpecialPurposeEffect         EGT_BURST_HIT_EFFECT, HitMediumCannon.ebg
+
+setSpecialPurposeEffect         EGT_BURST_EXPLOSION_EFFECT, HitMediumCannon.ebg
+        setSpecialPurposeEffect         EGT_BURST_EXPLOSION_EFFECT, HitMediumCannon.ebg
+        setSpecialPurposeEffect         EGT_BURST_EXPLOSION_EFFECT, HitMediumCannon.ebg
+        setSpecialPurposeEffect         EGT_BURST_EXPLOSION_EFFECT, HitMediumCannon.ebg
+        setSpecialPurposeEffect         EGT_BURST_EXPLOSION_EFFECT, HitMediumCannon.ebg
+        setSpecialPurposeEffect         EGT_BURST_EXPLOSION_EFFECT, HitMediumCannon.ebg
+
+//setSpecialPurposeEffect         EGT_CLOAK_ON, cloak.ebg
+setSpecialPurposeEffect         EGT_CLOAK_ON, cloakFighter00.ebg
+    setSpecialPurposeEffect         EGT_CLOAK_ON, cloakFighter00.ebg
+    setSpecialPurposeEffect         EGT_CLOAK_ON, cloakFighter00.ebg
+    setSpecialPurposeEffect         EGT_CLOAK_ON, cloakFighter00.ebg
+    setSpecialPurposeEffect         EGT_CLOAK_ON, cloakFighter00.ebg
+
+setSpecialPurposeEffect         EGT_CLOAK_OFF, unCloakFighter00.ebg
+    setSpecialPurposeEffect         EGT_CLOAK_OFF, unCloakFighter00.ebg
+    setSpecialPurposeEffect         EGT_CLOAK_OFF, unCloakFighter00.ebg
+    setSpecialPurposeEffect         EGT_CLOAK_OFF, unCloakFighter00.ebg
+    setSpecialPurposeEffect         EGT_CLOAK_OFF, unCloakFighter00.ebg
+    setSpecialPurposeEffect         EGT_CLOAK_OFF, unCloakFighter00.ebg
+
+setSpecialPurposeEffect         EGT_BULLET_DEFLECT, DefenseFieldDeflect.ebg
+    setSpecialPurposeEffect         EGT_BULLET_DEFLECT, DefenseFieldDeflect.ebg
+
+//setSpecialPurposeEffect         EGT_GRAVWELL_ON, gravity.ebg
+setSpecialPurposeEffect         EGT_GRAVWELL_ON, gravWellOn.ebg
+    setSpecialPurposeEffect         EGT_GRAVWELL_ON, gravWellOn.ebg
+    setSpecialPurposeEffect         EGT_GRAVWELL_ON, gravWellOn.ebg
+    setSpecialPurposeEffect         EGT_GRAVWELL_ON, gravWellOn.ebg
+    setSpecialPurposeEffect         EGT_GRAVWELL_ON, gravWellOn.ebg
+    setSpecialPurposeEffect         EGT_GRAVWELL_ON, gravWellOn.ebg
+
+//setSpecialPurposeEffect         EGT_GRAVWELL_OFF, gravityOff.ebg
+setSpecialPurposeEffect         EGT_GRAVWELL_OFF, gravWellOff.ebg
+    setSpecialPurposeEffect         EGT_GRAVWELL_OFF, gravWellOff.ebg
+    setSpecialPurposeEffect         EGT_GRAVWELL_OFF, gravWellOff.ebg
+    setSpecialPurposeEffect         EGT_GRAVWELL_OFF, gravWellOff.ebg
+    setSpecialPurposeEffect         EGT_GRAVWELL_OFF, gravWellOff.ebg
+    setSpecialPurposeEffect         EGT_GRAVWELL_OFF, gravWellOff.ebg
+
+//setSpecialPurposeEffect         EGT_CRATE_GENERATED, DDSshockwave.ebg
+setSpecialPurposeEffect         EGT_CRATE_GENERATED, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_GENERATED, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_GENERATED, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_GENERATED, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_GENERATED, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_GENERATED, DDSshockwave.ebg
+
+//setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_SHIP, DDSshockwave.ebg
+setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_SHIP, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_SHIP, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_SHIP, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_SHIP, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_SHIP, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_SHIP, DDSshockwave.ebg
+
+//setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_RESEARCH, DDSshockwave.ebg
+setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_RESEARCH, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_RESEARCH, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_RESEARCH, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_RESEARCH, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_RESEARCH, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_RESEARCH, DDSshockwave.ebg
+
+//setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_MONEY, DDSshockwave.ebg
+setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_MONEY, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_MONEY, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_MONEY, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_MONEY, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_MONEY, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_IS_FOUND_MONEY, DDSshockwave.ebg
+
+//setSpecialPurposeEffect         EGT_CRATE_TIME_OUT, DDSshockwave.ebg
+setSpecialPurposeEffect         EGT_CRATE_TIME_OUT, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_TIME_OUT, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_TIME_OUT, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_TIME_OUT, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_TIME_OUT, DDSshockwave.ebg
+    setSpecialPurposeEffect         EGT_CRATE_TIME_OUT, DDSshockwave.ebg
+
+setSpecialPurposeEffect         EGT_REPAIR_BEAM, Repair_Corvette.ebg
+    setSpecialPurposeEffect         EGT_REPAIR_BEAM, Repair_Corvette.ebg
+    setSpecialPurposeEffect         EGT_REPAIR_BEAM, Repair_Corvette.ebg
+    setSpecialPurposeEffect         EGT_REPAIR_BEAM, Repair_Corvette.ebg
+    setSpecialPurposeEffect         EGT_REPAIR_BEAM, Repair_Corvette.ebg
+    setSpecialPurposeEffect         EGT_REPAIR_BEAM, Repair_Corvette.ebg
+
+setSpecialPurposeEffect         EGT_CAUGHT_GRAVWELL, caughtGravWell.ebg
+        setSpecialPurposeEffect         EGT_CAUGHT_GRAVWELL, caughtGravWell.ebg
+        setSpecialPurposeEffect         EGT_CAUGHT_GRAVWELL, caughtGravWell.ebg
+        setSpecialPurposeEffect         EGT_CAUGHT_GRAVWELL, caughtGravWell.ebg
+        setSpecialPurposeEffect         EGT_CAUGHT_GRAVWELL, caughtGravWell.ebg
+        setSpecialPurposeEffect         EGT_CAUGHT_GRAVWELL, caughtGravWell.ebg
+
+
+//hyperspace effect(s)
+setHyperspaceEvent      HyperWindow.ebg
+        setHyperspaceEvent      HyperWindow.ebg
+        setHyperspaceEvent      HyperWindow.ebg
+        setHyperspaceEvent      HyperWindow.ebg
+        setHyperspaceEvent      HyperWindow.ebg
+
+//ship damage effects
+
+//setDamageEvent          CLASS_Fighter,light,DamageStrike.ebg
+setDamageEvent          CLASS_Fighter,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_Fighter,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_Fighter,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_Fighter,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_Fighter,light,damageLightCapital01.ebg
+
+//setDamageEvent          CLASS_Corvette,light,DamageStrike.ebg
+setDamageEvent          CLASS_Corvette,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_Corvette,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_Corvette,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_Corvette,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_Corvette,light,damageLightCapital01.ebg
+
+//setDamageEvent          CLASS_Mothership,light,DamageSparksCapital.ebg
+setDamageEvent          CLASS_Mothership,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_Mothership,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_Mothership,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_Mothership,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_Mothership,light,damageLightCapital01.ebg
+setDamageEvent          CLASS_Mothership,heavy,damageCapitalMajor.ebg
+    setDamageEvent          CLASS_Mothership,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_Mothership,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_Mothership,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_Mothership,heavy,damageCapitalMajor01.ebg
+setDamageEvent          CLASS_Mothership,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Mothership,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Mothership,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Mothership,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Mothership,dying,DamageBillowCapital.ebg
+
+//setDamageEvent          CLASS_HeavyCruiser,light,DamageSparksCapital.ebg
+setDamageEvent          CLASS_HeavyCruiser,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_HeavyCruiser,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_HeavyCruiser,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_HeavyCruiser,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_HeavyCruiser,light,damageLightCapital01.ebg
+setDamageEvent          CLASS_HeavyCruiser,heavy,damageCapitalMajor.ebg
+    setDamageEvent          CLASS_HeavyCruiser,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_HeavyCruiser,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_HeavyCruiser,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_HeavyCruiser,heavy,damageCapitalMajor01.ebg
+setDamageEvent          CLASS_HeavyCruiser,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_HeavyCruiser,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_HeavyCruiser,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_HeavyCruiser,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_HeavyCruiser,dying,DamageBillowCapital.ebg
+
+//setDamageEvent          CLASS_Carrier,light,DamageSparksCapital.ebg
+setDamageEvent          CLASS_Carrier,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_Carrier,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_Carrier,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_Carrier,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_Carrier,light,damageLightCapital01.ebg
+setDamageEvent          CLASS_Carrier,heavy,damageCapitalMajor.ebg
+    setDamageEvent          CLASS_Carrier,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_Carrier,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_Carrier,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_Carrier,heavy,damageCapitalMajor01.ebg
+setDamageEvent          CLASS_Carrier,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Carrier,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Carrier,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Carrier,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Carrier,dying,DamageBillowCapital.ebg
+
+//setDamageEvent          CLASS_Destroyer,light,DamageSparksCapital.ebg
+setDamageEvent          CLASS_Destroyer,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_Destroyer,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_Destroyer,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_Destroyer,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_Destroyer,light,damageLightCapital01.ebg
+setDamageEvent          CLASS_Destroyer,heavy,damageCapitalMajor.ebg
+    setDamageEvent          CLASS_Destroyer,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_Destroyer,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_Destroyer,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_Destroyer,heavy,damageCapitalMajor01.ebg
+setDamageEvent          CLASS_Destroyer,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Destroyer,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Destroyer,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Destroyer,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Destroyer,dying,DamageBillowCapital.ebg
+
+//setDamageEvent          CLASS_Frigate,light,DamageSparksCapital.ebg
+//setDamageEvent          CLASS_Frigate,light,damageEngineSparks.ebg
+setDamageEvent          CLASS_Frigate,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_Frigate,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_Frigate,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_Frigate,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_Frigate,light,damageLightCapital01.ebg
+
+//setDamageEvent          CLASS_Frigate,heavy,DamageSmokeCapital.ebg
+setDamageEvent          CLASS_Frigate,heavy,damageCapitalMajor.ebg
+    setDamageEvent          CLASS_Frigate,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_Frigate,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_Frigate,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_Frigate,heavy,damageCapitalMajor01.ebg
+
+setDamageEvent          CLASS_Frigate,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Frigate,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Frigate,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Frigate,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Frigate,dying,DamageBillowCapital.ebg
+
+//setDamageEvent          CLASS_Resource,light,DamageSparksCapital.ebg
+setDamageEvent          CLASS_Resource,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_Resource,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_Resource,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_Resource,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_Resource,light,damageLightCapital01.ebg
+setDamageEvent          CLASS_Resource,heavy,damageCapitalMajor.ebg
+    setDamageEvent          CLASS_Resource,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_Resource,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_Resource,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_Resource,heavy,damageCapitalMajor01.ebg
+setDamageEvent          CLASS_Resource,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Resource,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Resource,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Resource,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_Resource,dying,DamageBillowCapital.ebg
+
+//setDamageEvent          CLASS_NonCombat,light,DamageSparksCapital.ebg
+setDamageEvent          CLASS_NonCombat,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_NonCombat,light,damageLightCapital.ebg
+    setDamageEvent          CLASS_NonCombat,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_NonCombat,light,damageLightCapital01.ebg
+    setDamageEvent          CLASS_NonCombat,light,damageLightCapital01.ebg
+setDamageEvent          CLASS_NonCombat,heavy,damageCapitalMajor.ebg
+    setDamageEvent          CLASS_NonCombat,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_NonCombat,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_NonCombat,heavy,damageCapitalMajor01.ebg
+    setDamageEvent          CLASS_NonCombat,heavy,damageCapitalMajor01.ebg
+setDamageEvent          CLASS_NonCombat,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_NonCombat,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_NonCombat,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_NonCombat,dying,DamageBillowCapital.ebg
+    setDamageEvent          CLASS_NonCombat,dying,DamageBillowCapital.ebg
+
+//death effects for derelicts
+setDeathEvent           PrisonShipnew, damage, DestDamageLarge.ebg
+setDeathEvent           PrisonShipnew, projectile, DestDamageSmall.ebg
+setDeathEvent           PrisonShipnew, beam, DestBeam.ebg
+
+
+setDeathEvent           Crate, damage, DestDamageSmall.ebg
+setDeathEvent           Crate, projectile, DestDamageSmall.ebg
+setDeathEvent           Crate, beam, DestBeam.ebg
+
+
+setDeathEvent           HyperspaceGate, damage, DestBeam.ebg
+setDeathEvent           HyperspaceGate, projectile, DestBeam.ebg
+setDeathEvent           HyperspaceGate, beam, DestBeam.ebg
+
+//
+//effects testing keys.  Use the ' <control> r' key to reload effects.
+//
+//TestEffect              P, Gun, Gun0,destdamagelarge.ebg
+//TestEffect              O, Gun, Gun0,FirePlasmaMedium01.ebg
+//TestEffect              I, Gun, Gun0,FirePlasmaMedium02.ebg
+//TestEffect              O, Gun, Gun0, testSphereParticles.ebg
+//TestEffect              I, Gun, Gun0, PlanetBurn.ebg
+//TestEffect              Q, Gun, Gun0, GalaxyMapOpen.ebg
+//TestEffect              Q, Gun, Gun0, HotRaindrop.ebg
+//TestEffect              I, Gun, Gun0, DestPrisonShip.ebg
+
+//TestEffect              I, Gun, Gun0, DestBeam.ebg
+//TestEffect              O, Gun, Gun0, DestProjectileSmall.ebg
+//TestEffect              Q, Gun, Gun0, DestProjectileLarge.ebg
+
+//TestEffect              O, Gun, Gun0, r1death.ebg
+//TestEffect              Q, Gun, Gun0,moshipFireballs.ebg
+//TestEffect              W, Gun, Gun0,DDSfireball.ebg
+//
+//TestEffect              O, Gun, Gun0, damageRadiation.ebg
+
+SoftwareVersion         damageCapitalMajor.ebg, SWdamageCapitalMajor.ebg
+SoftwareVersion         damageCapitalMajor01.ebg, SWdamageCapitalMajor01.ebg
+

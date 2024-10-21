@@ -1,0 +1,40 @@
+#line 1 "d:\\homeworld\\DataSrc\\ETG\\bullet\\BulletCannonVeryLarge.etg"
+#line 1 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 112 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "d:\\homeworld\\DataSrc\\ETG\\bullet\\BulletCannonVeryLarge.etg"
+eventStart(float damage = 10, float velocity = 20, float length = 10, float duration = 9999)
+
+maxFrequency(100)
+
+variable
+{
+int   flame
+float flamesize
+float value
+
+float bulletOffset
+}
+
+startup
+{
+        setDefaults()
+
+            bulletOffset <- frandom(-100, 100)
+        setOffsetLOF(bulletOffset)
+
+        setScale(35)
+        setLength(1)
+        setDeltaR(5, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setMesh(etg\meshes\misc\bullet.geo)
+        setTexture(textures\bullets\PulseBlue, 0, 0, 32, 64)
+        setDepthWrite(0)
+        setPseudoBillboard(1)
+        setVelocityInWorldSpace(1)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(1000)
+
+        flame <- createMeshes(1,0)
+}

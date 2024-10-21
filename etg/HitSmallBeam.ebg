@@ -1,0 +1,87 @@
+#line 1 "D:\\Homeworld\\Datasrc\\ETG\\hit\\IonCannon\\HitIonBeam.etg"
+#line 1 "D:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 76 "D:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "D:\\Homeworld\\Datasrc\\ETG\\hit\\IonCannon\\HitIonBeam.etg"
+#line 1 "D:\\Homeworld\\src\\game\\specialeventdefs.h"
+
+#line 1 "D:\\Homeworld\\Datasrc\\ETG\\hit\\IonCannon\\HitIonBeam.etg"
+eventStart(float damage = 20, int fatal = 0)
+
+maxFrequency(100)
+
+variable
+{
+
+int notNeededDebugOnly
+
+float masterscale = 1
+float sparkSize
+float sparkSpeed
+float sparkSpeedLOF
+float sparkSpeedDist
+float sparkLength
+float sparkLengthDist
+float temp
+
+}
+
+startup
+{
+
+
+
+        temp <- fmult(damage, 0.0002)
+        masterscale <- fadd(temp, 0.10)
+
+    setDefaults()
+        temp <- fmult(masterscale, 180)
+    setScale(temp)
+        temp <- fmult(masterscale, 60)
+    setDeltaScale(temp)
+    setColorA([255 + 170 * 256 + 120 * 65536 + 180 * 65536 * 256])
+    setDeltaColorA(0, 0, 0, -360)
+    setTexture(textures\glow32 0, 0, 32, 32)
+    setAddColor(0.3, 0.12, 0.0)
+    setLighting(0)
+    setIllum(1)
+    setLifespan(.5)
+    setOffsetLOF(-5)
+    createSprites(1, 0)
+
+    setDefaults()
+        sparkSize <- fmult(masterscale, 30)
+        sparkSpeed <- fmult(masterscale, 30)
+        sparkSpeedLOF <- fmult(masterscale, 180)
+        sparkSpeedDist <- fmult(masterscale, 0)
+    setDeltaLOFDist(sparkSize)
+    setDeltaR(sparkSize, [(360) * 2.0 * 3.14159265359789 / 360.0])
+    setDeltaRDist(0, [(360) * 2.0 * 3.14159265359789 / 360.0])
+    setVelLOFDist(sparkSpeedLOF)
+    setVelR(sparkSpeed)
+    setVelRDist(sparkSpeedDist)
+        temp <- fmult(masterscale, 100)
+    setScale(temp)
+        temp <- fmult(masterscale, 100)
+    setDeltaScale(temp)
+    setColorA([220 + 220 * 256 + 220 * 65536 + 200 * 65536 * 256])
+    setDeltaColorA(0, 0, 0, -100)
+    setTexture(textures\glow32 0, 0, 32, 32)
+    setAddColor(1.0, 0.35, 0.0)
+    setLighting(0)
+    setIllum(1)
+    setLifespan(2)
+    setOffsetLOF(-5)
+    createSprites(1, 0)
+}
+
+eachFrame
+{
+    
+    at(2)
+    {
+        delete()
+    }
+}
+

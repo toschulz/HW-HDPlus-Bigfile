@@ -1,0 +1,578 @@
+// ******************PROTOTYPE***********************
+
+eventStart(float shipSize = 40, float velocity = 0.5)
+
+variable
+{
+float size
+
+float reactorOffset
+float shockSize
+float shockSizeRate
+
+float firepuffSize
+float firepuffSizeTemp
+float shiftLOF
+float shiftLOFTemp1
+float shiftLOFTemp2
+float shiftRTemp1
+float shiftRTemp2
+float shiftR
+float shiftTheta
+
+float temp
+float MainBoomASize
+float MainBoomBSize
+int MainBoomA
+int MainBoomB
+RGBA MainBoomBColor0
+RGBA MainBoomBColor1
+RGBA MainBoomBColor2
+
+float sparkSize
+float sparkSpeed
+float sparkSpeedLOF
+float sparkSpeedDist
+float sparkLength
+float sparkLengthDist
+
+float systemSizeDist
+float systemSize
+float particleSize
+float particleSizeDist
+float particleVel
+float particleVelDist
+float TumbleX
+float TumbleXTemp1
+float TumbleXTemp2
+float TumbleY
+float TumbleYTemp1
+float TumbleYTemp2
+float TumbleZ
+float TumbleZTemp1
+float TumbleZTemp2
+
+int   Mainsparks
+RGBA  ModMainSparkColor
+}
+
+startup
+{
+    setDefaults()
+    size <- fmult(shipSize, 0.6)
+}
+
+eachFrame
+{
+    at(0.01)
+    {
+
+        setDefaults()
+        reactorOffset <- fmult(size, -0.6)
+        setOffsetLOF(reactorOffset)        
+            temp <- fmult(size, 5.0)
+        setScale(temp)
+            temp <- fmult(size, 5.0)
+        setDeltaScale(temp)
+        setColorA([255 + 200 * 256 + 100 * 65536 + 255 * 65536 * 256])
+        setDeltaColorA(0, 0, 0, -255)
+        setTexture(textures\glow32 0, 0, 32, 32)
+        setAddColor(1.0, 0.45, 0.2)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(1.0)
+        createSprites(1, 0)
+            particleSize <- fmult(size, 0.7)
+            particleVel <- fmult(size, 1)
+        spawn(B5genericdebris.ebg, 7, 6, particleSize, particleVel)
+
+
+
+
+        
+        setDefaults()
+            shockSize <- fmult(size, 5)
+            shockSizeRate <- fmult(size, 30)
+            reactorOffset <- fmult(size, -0.6)
+        setOffsetLOF(reactorOffset)
+        setScale(shockSize)
+        setDeltaScale(shockSizeRate)
+        setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+        setAddColor(1.0, 0.35, 0.2)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(0.1)
+        setTexture(textures\glow32 0, 0, 32, 32)
+        createSprites(1, 0)
+            particleSize <- fmult(size, 0.7)
+            particleVel <- fmult(size, 1)
+        spawn(B5genericdebris.ebg, 10, 2, particleSize, particleVel)
+    }
+
+    
+    at(0.01)
+    {
+        setDefaults()
+
+                shiftLOFTemp1 <- fmult(size, -2)
+                shiftLOFTemp2 <- fmult(size, 2)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setOffsetLOF(reactorOffset)
+        setOffsetR(shiftR, shiftTheta)
+
+            temp <- fmult(size, 4.0)
+        setScale(temp)
+            MainBoomASize <- 1
+        setColorA([255 + 200 * 256 + 100 * 65536 + 255 * 65536 * 256])
+        setDeltaColorA(0, 0, 0, -255)
+        setTexture(textures\glow32 0, 0, 32, 32)
+        setAddColor(1.0, 0.45, 0.2)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(1.0)
+        createSprites(1, 0)
+            particleSize <- fmult(size, 0.7)
+            particleVel <- fmult(size, 1)
+        spawn(B5genericdebris.ebg, 5, 7, particleSize, particleVel)
+
+
+
+
+        setDefaults()
+                firepuffSizeTemp <- 0.8
+            firepuffSize <- fmult(firepuffSizeTemp, size)
+                shiftLOFTemp1 <- fmult(size, -2)
+                shiftLOFTemp2 <- fmult(size, 2)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setEffOffsetLOF(reactorOffset)
+        setEffOffsetR(shiftR, shiftTheta)
+
+            particleSize <- fmult(size, 0.7)
+            particleVel <- fmult(size, 0.8)
+        spawn(B5genericdebris.ebg, 9, 2, particleSize, particleVel)
+    }
+
+    at(0.2)
+        {
+            particleSize <- fmult(size, 0.7)
+            particleVel <- fmult(size, 1)
+        spawn(B5genericdebris.ebg, 5, 0, particleSize, particleVel)
+        }    
+
+    at(0.4)
+        {
+            particleSize <- fmult(size, 0.7)
+            particleVel <- fmult(size, 1)
+        spawn(B5genericdebris.ebg, 5, 7, particleSize, particleVel)
+        }    
+
+    //at(0.43)
+      //  {
+        
+        //spawn(DDSshockwave.ebg, size)
+        //}
+    at(0.6)
+    {
+        setDefaults()
+
+           shiftLOFTemp1 <- fmult(size, -0.5)
+                shiftLOFTemp2 <- fmult(size, 2)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setOffsetLOF(shiftLOF)
+        setOffsetR(shiftR, shiftTheta)
+
+            temp <- fmult(size, 6.0)
+        setScale(temp)
+            MainBoomASize <- 1
+        setColorA([255 + 200 * 256 + 100 * 65536 + 255 * 65536 * 256])
+        setDeltaColorA(0, 0, 0, -255)
+        setTexture(textures\glow32 0, 0, 32, 32)
+        setAddColor(1.0, 0.45, 0.2)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(1.0)
+        createSprites(1, 0)
+            particleSize <- fmult(size, 0.7)
+            particleVel <- fmult(size, 0.7)
+        spawn(B5genericdebris.ebg, 8, 1, particleSize, particleVel)
+
+
+
+
+
+        setDefaults()
+                firepuffSizeTemp <- frandom(0.6, 1.0)
+            firepuffSize <- fmult(firepuffSizeTemp, size)
+                shiftLOFTemp1 <- fmult(size, -0.5)
+                shiftLOFTemp2 <- fmult(size, 2)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setEffOffsetLOF(shiftLOF)
+        setEffOffsetR(shiftR, shiftTheta)
+
+        spawn(B5explosion.ebg, firepuffSize)
+        
+        setDefaults()
+            particleSize <- fmult(size, 0.7)
+            particleVel <- fmult(size, 0.6)
+        spawn(B5genericdebris.ebg, 15, 9, particleSize, particleVel)
+    }
+
+
+at(0.8)
+{
+    setDefaults()
+        particleVel <- fmult(size, 1.2)
+        temp <- fmult(size, 0.4)
+    setDeltaLOFDist(temp)
+        temp <- fmult(size, 0.4)
+    setDeltaR(temp, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        temp <- fmult(size, 0.2)
+    setDeltaRDist(temp, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        temp <- fmult(particleVel, 1.4)
+    setVelLOFDist(temp)
+        temp <- fmult(particleVel, 0.7)
+    setVelR(temp)
+        temp <- fmult(particleVel, 0.5)
+    setVelRDist(temp)
+        temp <- fmult(size, 1)
+    setLOFOffset(temp)
+
+    createEffects(B5genericdebrisspawn.ebg, 16, 5, 1, size, particleVel)
+}
+
+at(0.8)
+{
+    setDefaults()
+        particleVel <- fmult(size, 1.2)
+        temp <- fmult(size, 0.4)
+    setDeltaLOFDist(temp)
+        temp <- fmult(size, 0.4)
+    setDeltaR(temp, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        temp <- fmult(size, 0.2)
+    setDeltaRDist(temp, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        temp <- fmult(particleVel, 1.4)
+    setVelLOFDist(temp)
+        temp <- fmult(particleVel, 0.7)
+    setVelR(temp)
+        temp <- fmult(particleVel, 0.5)
+    setVelRDist(temp)
+        temp <- fmult(size, 1)
+    setLOFOffset(temp)
+
+    createEffects(B5genericdebrisspawn.ebg, 10, 3, 1, size, particleVel)
+}
+
+    at(0.8)
+{
+        setDefaults()        
+            particleSize <- fmult(size, 0.7)
+            particleVel <- fmult(size, 1.0)
+        spawn(B5genericdebris.ebg, 5, 7, particleSize, particleVel)
+}
+
+    
+
+    at(0.8)
+    {
+        setDefaults()
+
+      shiftLOFTemp1 <- fmult(size, 0)
+                shiftLOFTemp2 <- fmult(size, 2)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setOffsetLOF(shiftLOF)
+        setOffsetR(shiftR, shiftTheta)
+
+            temp <- fmult(size, 6.0)
+        setScale(temp)
+            MainBoomASize <- 1
+        setColorA([255 + 200 * 256 + 100 * 65536 + 255 * 65536 * 256])
+        setDeltaColorA(0, 0, 0, -255)
+        setTexture(textures\glow32 0, 0, 32, 32)
+        setAddColor(1.0, 0.45, 0.2)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(1.0)
+        createSprites(1, 0)
+
+
+        setDefaults()
+                firepuffSizeTemp <- frandom(0.6, 1.0)
+            firepuffSize <- fmult(firepuffSizeTemp, size)
+                shiftLOFTemp1 <- fmult(size, 0)
+                shiftLOFTemp2 <- fmult(size, 2)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setEffOffsetLOF(shiftLOF)
+        setEffOffsetR(shiftR, shiftTheta)
+
+        spawn(B5explosion.ebg, firepuffSize)
+    }
+
+    at(0.8)
+{
+        setDefaults()        
+            particleSize <- fmult(size, 0.7)
+            particleVel <- fmult(size, 1.0)
+        spawn(B5genericdebris.ebg, 8, 2, particleSize, particleVel)
+}
+
+//*************************** MAIN BOOM **************************************
+// created small at 0.8
+// EXPLOSION ie expands at 1.0
+// dies away at 3.0
+
+    at(1.0)
+    {
+        setDefaults()
+            temp <- fmult(size, 9.0)
+        setScale(temp)
+            temp <- fmult(size, 3.0)
+        setDeltaScale(temp)
+         //   MainBoomASize <- 1
+        setColorA([255 + 200 * 256 + 100 * 65536 + 255 * 65536 * 256])
+        setDeltaColorA(0, 0, 0, -115)
+        setTexture(textures\glow32 0, 0, 32, 32)
+        setAddColor(1.0, 0.45, 0.2)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(2.6)
+setOffsetLOF(-1)
+        MainBoomA <- createSprites(1, 0)
+    }    
+
+    at(1.0)
+    {
+        setDefaults()
+            temp <- fmult(size, 8.0)
+        setScale(temp)
+            temp <- fmult(size, 2.0)
+        setDeltaScale(temp)
+         //   MainBoomBSize <- 1
+        setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+            MainBoomBColor0 <- [255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256]
+            MainBoomBColor1 <- [255 + 160 * 256 + 20 * 65536 + 255 * 65536 * 256]
+            MainBoomBColor2 <- [255 + 70 * 256 + 0 * 65536 + 0 * 65536 * 256]
+        setTexture(textures\glow32 0, 0, 32, 32)
+        setAddColor(1.0, 0.3, 0.0)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(2.2)
+setOffsetLOF(-1)
+        MainBoomB <- createSprites(1, 0)        
+        }
+
+at(1.1)
+    {
+        setDefaults()
+shiftLOFTemp1 <- fmult(size, 0)
+                shiftLOFTemp2 <- fmult(size, 3)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setOffsetLOF(shiftLOF)
+        setOffsetR(shiftR, shiftTheta)
+
+
+
+            temp <- fmult(size, 9.0)
+        setScale(temp)
+            temp <- fmult(size, 3.0)
+        setDeltaScale(temp)
+        setColorA([255 + 200 * 256 + 100 * 65536 + 255 * 65536 * 256])
+        setDeltaColorA(0, 0, 0, -115)
+        setTexture(textures\glow32 0, 0, 32, 32)
+        setAddColor(1.0, 0.45, 0.20)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(2.6)
+setOffsetLOF(3)
+        createSprites(1, 0)
+    }    
+
+    at(1.1)
+    {
+        setDefaults()
+shiftLOFTemp1 <- fmult(size, 0)
+                shiftLOFTemp2 <- fmult(size, 1)
+                shiftRTemp1 <- fmult(size, -0.2)
+                shiftRTemp2 <- fmult(size, 0.2)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setOffsetLOF(shiftLOF)
+        setOffsetR(shiftR, shiftTheta)
+        
+
+
+    temp <- fmult(size, 8.0)
+        setScale(temp)
+            temp <- fmult(size, 2.0)
+        setDeltaScale(temp)
+        setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+            MainBoomBColor0 <- [255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256]
+            MainBoomBColor1 <- [255 + 160 * 256 + 20 * 65536 + 255 * 65536 * 256]
+            MainBoomBColor2 <- [255 + 70 * 256 + 0 * 65536 + 0 * 65536 * 256]
+        setDeltaColorA(0, 0, 0, -115)
+        setTexture(textures\glow32 0, 0, 32, 32)
+        setAddColor(1.0, 0.3, 0.0)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(2.2)
+setOffsetLOF(3)
+        createSprites(1, 0)        
+        }
+//************************** MAIN SPARKS *************************************
+    at(1.0)
+    {
+        setDefaults()
+        setScale(1)
+            sparkSize <- fmult(size, 1)
+            sparkSpeed <- fmult(size, 2.4)
+            sparkSpeedLOF <- fmult(size, 4.8)
+            sparkSpeedDist <- fmult(size, 0.8)
+        setDeltaLOFDist(sparkSize)
+        setDeltaR(sparkSize, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setDeltaRDist(0, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setVelLOFDist(sparkSpeedLOF)
+        setVelR(sparkSpeed)
+        setVelRDist(sparkSpeedDist)
+    
+        setColorA([255 + 230 * 256 + 120 * 65536 + 230 * 65536 * 256])
+            ModMainSparkColor <- [255 + 230 * 256 + 120 * 65536 + 230 * 65536 * 256]
+
+        setLifespan(2)
+        setIsWorldSpace(1)
+        Mainsparks <- createLines(50,0)
+        {
+            sparkLength <- fmult(size, 0.2)
+            sparkLengthDist <- fmult(size, 0.04)
+        setLength(sparkLength)
+        setLengthDist(sparkLengthDist)
+        }
+    }
+
+//***************************** DEBRIS ***************************************
+    at(1.0)
+    {
+        setDefaults()
+            particleSize <- fmult(size, 0.8)
+            particleVel <- fmult(size, 1.3)
+        spawn(B5genericdebris.ebg, 11, 9, particleSize, particleVel)
+    }
+
+    at(1.0)
+    {
+        setDefaults()
+            particleVel <- fmult(size, 0.8)
+        spawn(B5genericdebris.ebg, 8, 1, size, particleVel)
+    }
+    at(1.0)
+    {
+        setDefaults()
+            particleVel <- fmult(size, 0.8)
+        spawn(B5genericdebris.ebg, 8, 2, size, particleVel)
+    }
+
+    at(1.0)
+    {
+        setDefaults()
+            particleVel <- fmult(size, 0.8)
+        spawn(B5genericdebris.ebg, 10, 7, size, particleVel)
+    }
+    at(1.0)
+    {
+        setDefaults()
+            particleVel <- fmult(size, 0.8)
+        spawn(B5genericdebris.ebg, 10, 6, size, particleVel)
+    }
+
+    at(1.0)
+    {
+        
+        spawn(DDSshockwave.ebg, size)
+    }
+    at(1.0)
+    {
+        setDefaults()
+            particleVel <- fmult(size, 0.5)
+        spawn(B5genericdebris.ebg, 4, 2, size, particleVel)
+    }
+
+}
+
+    
+
+eachFrame
+{
+after(1.01)
+{
+modifyColorA(MainBoomB, MainBoomBColor0)
+}
+after(1.01)
+{
+modifyColorA(Mainsparks, ModMainSparkColor)
+}
+}
+
+timeIndex
+{
+    after(1.01)
+    {
+    timeBlock(MainBoomBColor0)
+        {
+        time(2.2, MainBoomBColor1)
+        time(3.0, MainBoomBColor2)
+        }
+    }
+    after(1.01)
+    {
+    timeBlock(ModMainSparkColor)
+        {
+        time(2.5, 1.0, 0.9, 0.5, 0.7)
+        time(3.5, 1.0, 0.5, 0.0, 0)
+        }
+    }
+
+}
+
+
+
+eachFrame
+{
+    at(1)
+    {
+        hideParentShip()
+        deleteParentShip()
+
+    }
+
+    at(9)
+    {
+        delete()
+    }
+}

@@ -1,0 +1,386 @@
+#line 1 "d:\\homeworld\\DataSrc\\ETG\\death\\DestProjectileLarge\\DestProjectileLarge.etg"
+#line 1 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 112 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "d:\\homeworld\\DataSrc\\ETG\\death\\DestProjectileLarge\\DestProjectileLarge.etg"
+eventStart(float shipSize = 40, float velocity = 0.5)
+
+#line 1 "d:\\homeworld\\src\\game\\soundeventdefs.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 4 "d:\\homeworld\\DataSrc\\ETG\\death\\DestProjectileLarge\\DestProjectileLarge.etg"
+
+variable
+{
+float size
+
+float reactorOffset
+float shockSize
+float shockSizeRate
+
+float firepuffSize
+float firepuffSizeTemp
+float shiftLOF
+float shiftLOFTemp1
+float shiftLOFTemp2
+float shiftRTemp1
+float shiftRTemp2
+float shiftR
+float shiftTheta
+
+}
+
+startup
+{
+    setDefaults()
+    size <- fmult(shipSize, 0.6)
+}
+
+eachFrame
+{
+    at(0.01)
+    {
+
+        playSound([(4 + 4096)])
+
+        
+        setDefaults()
+            shockSize <- fmult(size, 5)
+            shockSizeRate <- fmult(size, 30)
+            reactorOffset <- fmult(size, -0.6)
+        setOffsetLOF(reactorOffset)
+        setScale(shockSize)
+        setDeltaScale(shockSizeRate)
+        setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+        setAddColor(1.0, 0.75, 0.5)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(0.1)
+        setTexture(textures\glow32 0, 0, 32, 32)
+        createSprites(1, 0)
+    }
+
+    
+    at(0.01)
+    {
+        
+        setDefaults()
+                firepuffSizeTemp <- 1.5
+            firepuffSize <- fmult(firepuffSizeTemp, size)
+                shiftLOFTemp1 <- fmult(size, -3)
+                shiftLOFTemp2 <- fmult(size, 3)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setEffOffsetLOF(reactorOffset)
+        setEffOffsetR(shiftR, shiftTheta)
+
+        spawn(DPLboom.ebg, firepuffSize)
+    }
+
+    
+    at(0.6)
+    {
+        
+        setDefaults()
+                firepuffSizeTemp <- frandom(0.8, 1.3)
+            firepuffSize <- fmult(firepuffSizeTemp, size)
+                shiftLOFTemp1 <- fmult(size, -0.5)
+                shiftLOFTemp2 <- fmult(size, 3)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setEffOffsetLOF(shiftLOF)
+        setEffOffsetR(shiftR, shiftTheta)
+
+        spawn(DPLboom.ebg, firepuffSize)
+    }
+
+    
+    at(0.8)
+    {
+        setDefaults()
+                firepuffSizeTemp <- frandom(0.8, 1.3)
+            firepuffSize <- fmult(firepuffSizeTemp, size)
+                shiftLOFTemp1 <- fmult(size, 0)
+                shiftLOFTemp2 <- fmult(size, 3)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setEffOffsetLOF(shiftLOF)
+        setEffOffsetR(shiftR, shiftTheta)
+
+        spawn(DPLboom.ebg, firepuffSize)
+    }
+
+    
+    at(1.0)
+    {
+        
+        setDefaults()
+                firepuffSizeTemp <- frandom(0.8, 1.3)
+            firepuffSize <- fmult(firepuffSizeTemp, size)
+                shiftLOFTemp1 <- fmult(size, 0)
+                shiftLOFTemp2 <- fmult(size, 4)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setEffOffsetLOF(shiftLOF)
+        setEffOffsetR(shiftR, shiftTheta)
+
+        spawn(DPLboom.ebg, firepuffSize)
+    }
+
+}
+
+
+eachFrame
+{
+    at(1)
+    {
+        hideParentShip()
+        deleteParentShip()
+    }
+
+    at(2)
+    {
+        delete()
+    }
+}

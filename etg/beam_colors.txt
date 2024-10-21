@@ -1,0 +1,5 @@
+BulletNeutronBeam: yellow,flat
+BulletLaser: red, flat
+BulletLightningBeam: yellow,pulse
+BulletFusionBeam: purple,pulse
+BulletDrakhBeam: blue,pulse

@@ -1,0 +1,233 @@
+#line 1 "d:\\Homeworld\\DataSrc\\ETG\\death\\DestDamageSmall\\DestDamageSmall.etg"
+#line 1 "d:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 112 "d:\\Homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "d:\\Homeworld\\DataSrc\\ETG\\death\\DestDamageSmall\\DestDamageSmall.etg"
+eventStart(float size = 50, float velocity = 0.3)
+
+#line 1 "d:\\Homeworld\\src\\game\\soundEventDefs.h"
+
+#line 127 "d:\\Homeworld\\src\\game\\soundEventDefs.h"
+#line 4 "d:\\Homeworld\\DataSrc\\ETG\\death\\DestDamageSmall\\DestDamageSmall.etg"
+
+variable
+{
+float velTemp
+float delay
+float glowSize
+float modGlowSizeTemp1
+float modGlowSizeTemp2
+float modGlowSize
+int   glowSprite = 0
+
+float shockSize
+float shockSizeRate
+float particleVel
+float particleSize
+float fireballSize
+float fireballSpeed
+float firePuffSize
+
+float DeltaLOF
+float DeltaLOFDist
+float DeltaR
+float DeltaRDist
+}
+
+startup
+
+eachFrame
+{
+    if(velocity >= 0.2)
+    {
+         
+
+
+
+    
+         velTemp <- fdiv(1, velocity)
+         delay <- fmult(velTemp, 0.1)
+         every(delay)
+         {
+            setDefaults()
+            spawn(B5fireball.ebg, size, 2, 1)
+         }
+
+         at(0.01)
+         {
+            
+            
+            setDefaults()
+                glowSize <- fmult(size, 3)
+                modGlowSize <- glowSize
+            setScale(glowSize)
+            setLighting(1)
+            setIllum(1)
+            setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+            setAddColor(1.0, 0.8, 0.5)
+            setTexture(textures\glow32 0, 0, 32, 32)
+            setLifespan(2)
+            glowSprite <- createSprites(2, 1)
+         }
+
+        modGlowSizeTemp1 <- fmult(size, 2.5)
+        modGlowSizeTemp2 <- fmult(size, 4.5)
+        modGlowSize <- frandom(modGlowSizeTemp1, modGlowSizeTemp2)
+        if (glowSprite <> 0)
+        {
+            modifyScale(glowSprite, modGlowSize)
+        }
+
+
+        
+        at(1.65)
+        {
+
+            setDefaults()
+            spawn(B5sparksLite.ebg, size)
+        }
+
+        at(1.75)
+        {
+        
+           spawn(DBsphere.ebg, size)
+        }
+        
+        at(1.85)
+        {
+            setDefaults()
+                shockSize <- fmult(size, 5)
+                shockSizeRate <- fmult(size, 10)
+            setScale(shockSize)
+            setDeltaScale(shockSizeRate)
+            setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+            setAddColor(1.0, 0.75, 0.5)
+            setLighting(0)
+            setIllum(1)
+            setLifespan(0.8)
+            setTexture(textures\glow32 0, 0, 32, 32)
+            createSprites(2, 1)
+        }
+        at(1.7)
+        {
+        
+            spawn(DBsphere.ebg, size)
+        }
+
+    at(1.8)
+    {
+        setDefaults()
+
+        setDeltaLOF(0.01)
+        setDeltaLOFDist(0.01)
+        setDeltaR(0.01, 0.01)
+        setDeltaRDist(0.01, 0.01)
+
+        setColorA([255 + 255 * 256 + 255 * 65536 + 2550 * 65536 * 256])
+        setScale(50)
+        setLifespan(2)
+        setIsWorldSpace(1)
+        
+        createEffects(mointshipDust.ebg, 30, 5)
+    }
+        //at(1.9)
+        //{
+        //    spawn(DDSshockwave.ebg, size)
+        //}
+        //at(2.0)
+        //{
+        //spawn(DDSshockwave32.ebg, size)
+        //}
+
+
+        at(2.1)
+        {
+           spawn(HitLargeCannon.ebg, size)
+        }
+        at(2.2)
+        {
+
+            spawn(B5sparksLite.ebg, size)
+        }
+
+        at(2.3)
+        {
+            spawn(B5sparks.ebg, size)
+        }
+
+        at(2.4)
+        {
+            hideParentShip()
+            deleteParentShip()
+        }
+
+    }
+    else
+    {
+        
+        at(0.1)
+        {
+
+            setDefaults()
+                shockSize <- fmult(size, 1)
+                shockSizeRate <- fmult(size, 30)
+            setScale(shockSize)
+            setDeltaScale(shockSizeRate)
+            setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+            setAddColor(1.0, 0.75, 0.5)
+            setLighting(0)
+            setIllum(1)
+            setLifespan(0.3)
+            setTexture(textures\glow32 0, 0, 32, 32)
+            createSprites(2, 1)
+        }
+
+        
+
+        at(0.1)
+        {
+            setDefaults()
+                fireballSize <- fmult(size, 1)
+                fireballSpeed <- fmult(size, 3)
+            setDeltaLOF(fireballSize)
+            setDeltaR(fireballSize, [(360) * 2.0 * 3.14159265359789 / 360.0])
+            setDeltaRDist(0, [(360) * 2.0 * 3.14159265359789 / 360.0])
+            setVelR(fireballSpeed)
+            setVelLOFDist(fireballSpeed)
+            setLifespan(2)
+                firePuffSize <- fmult(size, 0.9)
+            createEffects(B5fireball.ebg, 3, 1, firePuffSize)
+        }
+        
+        at(0.5)
+        {
+            setDefaults()
+                fireballSize <- fmult(size, 1)
+                fireballSpeed <- fmult(size, 3)
+            setDeltaLOF(fireballSize)
+            setDeltaLOFDist(fireballSize)
+            setDeltaR(fireballSize, [(360) * 2.0 * 3.14159265359789 / 360.0])
+            setDeltaRDist(0, [(360) * 2.0 * 3.14159265359789 / 360.0])
+            setVelR(fireballSpeed)
+            setVelLOFDist(fireballSpeed)
+            setLifespan(2)
+                firePuffSize <- fmult(size, 0.7)
+            createEffects(B5fireball.ebg, 3, 1, firePuffSize)
+        }
+        at(0.1)
+        {
+            hideParentShip()
+            deleteParentShip()
+        }
+
+    }
+
+
+
+    at(3.0)
+    {
+        delete()
+    }
+}
+

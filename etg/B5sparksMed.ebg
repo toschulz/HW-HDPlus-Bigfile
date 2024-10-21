@@ -1,0 +1,72 @@
+// B5 Sparks - v1.0 - CnlPepper@mailandnews.com
+
+eventStart(float size)
+
+maxFrequency(60)
+
+variable
+{
+float sparkSize
+float sparkSpeed
+float sparkSpeedLOF
+float sparkSpeedDist
+float sparkLength
+float sparkLengthDist
+
+int   sparks
+RGBA  modSparkColor
+}
+
+startup
+{
+    setDefaults()
+    setScale(1)
+        sparkSize <- fmult(size, 1)
+        sparkSpeed <- fmult(size, 3)
+        sparkSpeedLOF <- fmult(size, 6)
+        sparkSpeedDist <- fmult(size, 2)
+    setDeltaLOFDist(sparkSize)
+    setDeltaR(sparkSize, [(360) * 2.0 * 3.14159265359789 / 360.0])
+    setDeltaRDist(0, [(360) * 2.0 * 3.14159265359789 / 360.0])
+    setVelLOFDist(sparkSpeedLOF)
+    setVelR(sparkSpeed)
+    setVelRDist(sparkSpeedDist)
+    
+    setColorA([255 + 200 * 256 + 180 * 65536 + 230 * 65536 * 256])
+        modSparkColor <- [255 + 200 * 256 + 180 * 65536 + 230 * 65536 * 256]
+
+    setLifespan(2)
+    setIsWorldSpace(1)
+    sparks <- createLines(19,0)
+
+    
+    {
+        sparkLength <- fmult(size, 0.7)
+        sparkLengthDist <- fmult(size, 0.2)
+
+    setLength(sparkLength)
+    setLengthDist(sparkLengthDist)
+    }
+}
+
+eachFrame
+{
+    modifyColorA(sparks, modSparkColor)
+}
+
+timeIndex
+{
+    timeBlock(modSparkColor)
+    {
+        time(1, 1.0, 0.9, 0.5, 0.7)
+        time(2, 0.9, 0.4, 0.0, 0)
+    }
+}
+
+eachFrame
+{
+    at(2)
+    {
+        delete()
+    }
+}

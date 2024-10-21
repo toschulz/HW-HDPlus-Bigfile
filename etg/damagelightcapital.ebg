@@ -1,0 +1,156 @@
+#line 1 "d:\\homeworld\\Datasrc\\ETG\\damage\\light\\damageLightCapital.etg"
+#line 1 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#line 112 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "d:\\homeworld\\Datasrc\\ETG\\damage\\light\\damageLightCapital.etg"
+
+eventStart(float damage, float size)
+
+
+
+maxFrequency(15)
+
+variable
+{
+int dummy = 1
+}
+
+startup
+{
+    setDefaults()
+    setEffDefaults()
+
+
+}
+
+eachFrame
+{
+    every(0.35)
+    {
+        setDefaults()
+        setEffDefaults()
+        spawn(damageEngineSparks.ebg, damage, size)
+    }
+}
+
+eachFrame
+{
+    at(0.5)
+    {
+        damageDone()
+    }
+}
+
+
+
+

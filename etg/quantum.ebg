@@ -1,0 +1,40 @@
+eventStart(float damage = 10, float velocity = 20, float length = 20, float duration = 9999)
+
+maxFrequency(80)
+
+label(torp)
+    subTextureDWORD(ETG\textures\bullets\quantum01,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\quantum02,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\quantum03,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\quantum04,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\quantum05,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\quantum06,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\quantum07,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\quantum08,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\quantum09,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\quantum10,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\quantum11,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+    subTextureDWORD(ETG\textures\bullets\quantum12,[64 * 16777216 + 64 * 65536 + 0 * 256 + 0], 1)
+
+int 4294967295
+
+
+variable
+{
+float temp
+}
+
+startup
+{
+
+
+    setDefaults()
+	temp <- fmult(damage, 0.008)
+	temp <- fmult(temp, 20)		;TUNE SCALE HERE
+    setScale(temp)
+    setAnimation(torp, 20, 100)
+    setLighting(0)
+    setIllum(1)
+    setLifespan(1000)
+    torp <- createSprites(1,0)
+}

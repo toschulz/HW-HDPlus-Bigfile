@@ -1,0 +1,62 @@
+#line 1 "defaultBlast.etg"
+#line 1 "c:\\homeworld\\dataSrc\\ETG\\etg.h"
+#line 59 "c:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "defaultBlast.etg"
+#line 1 "c:\\homeworld\\src\\game\\specialeventdefs.h"
+
+#line 1 "defaultBlast.etg"
+
+
+
+
+eventStart(float size = 30)
+
+variable
+{
+    int frame = 0
+    float temp
+    int dist
+}
+
+startup
+{
+    setDefaults()
+    
+        temp <- fmult(size, 2)
+    setVelLOF(temp)
+        temp <- fdiv(temp, 2)
+    setVelLOFDist(temp)
+
+    setDeltaR(1, 6.28318530719578)
+    setDeltaRDist(1, 6.28318530719578)
+        temp <- fdiv(temp, 2)
+    setVelR(temp)
+    setVelRDist(temp)
+    setOffsetLOF(0)
+    setDeltaLOF(0);
+
+    
+    setColorA([255 + 132 * 256 + 0 * 65536 + 180 * 65536 * 256])
+        setDeltaColorA(0, 0, 0, -320)
+   
+
+    
+        temp <- fdiv(size, 10)
+    setLength(temp)
+        temp <- fdiv(temp, 2)
+    setLengthDist(temp)
+    setLifespan(0.6)
+    
+    setScale(1)
+    createLines(5, 3)
+}
+
+eachFrame
+{
+    at(.6)
+    {
+        delete()
+    }
+}
+

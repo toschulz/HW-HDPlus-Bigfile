@@ -1,0 +1,754 @@
+// ******************PROTOTYPE***********************
+
+#line 1 "d:\\homeworld\\DataSrc\\ETG\\death\\DestDamageLarge\\DestDamageLarge.etg"
+#line 1 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 112 "d:\\homeworld\\dataSrc\\ETG\\etg.h"
+
+#line 1 "d:\\homeworld\\DataSrc\\ETG\\death\\DestDamageLarge\\DestDamageLarge.etg"
+eventStart(float shipSize = 40, float velocity = 0.5)
+
+#line 1 "d:\\homeworld\\src\\game\\soundeventdefs.h"
+
+#line 4 "d:\\homeworld\\DataSrc\\ETG\\death\\DestDamageLarge\\DestDamageLarge.etg"
+maxFrequency(30)
+variable
+{
+float size
+
+float reactorOffset
+float shockSize
+float shockSizeRate
+
+float firepuffSize
+float firepuffSizeTemp
+float shiftLOF
+float shiftLOFTemp1
+float shiftLOFTemp2
+float shiftRTemp1
+float shiftRTemp2
+float shiftR
+float shiftTheta
+
+float temp
+float MainBoomASize
+float MainBoomBSize
+int MainBoomA
+int MainBoomB
+RGBA MainBoomBColor0
+RGBA MainBoomBColor1
+RGBA MainBoomBColor2
+
+float sparkSize
+float sparkSpeed
+float sparkSpeedLOF
+float sparkSpeedDist
+float sparkLength
+float sparkLengthDist
+
+float systemSizeDist
+float systemSize
+float particleSize
+float particleSizeDist
+float particleVel
+float particleVelDist
+float TumbleX
+float TumbleXTemp1
+float TumbleXTemp2
+float TumbleY
+float TumbleYTemp1
+float TumbleYTemp2
+float TumbleZ
+float TumbleZTemp1
+float TumbleZTemp2
+
+float DeltaLOF
+float DeltaLOFDist
+float DeltaR
+float DeltaRDist
+
+int   Mainsparks
+RGBA  ModMainSparkColor
+
+int Debris1
+RGBA Debris1Color0
+RGBA Debris1Color1
+RGBA Debris1Color2
+
+int Debris2a
+RGBA Debris2aColor0
+RGBA Debris2aColor1
+RGBA Debris2aColor2
+
+int Debris2b
+RGBA Debris2bColor0
+RGBA Debris2bColor1
+RGBA Debris2bColor2
+}
+
+startup
+{
+    setDefaults()
+    size <- fmult(shipSize, 0.6)
+}
+
+eachFrame
+{
+
+
+    at(0.01)
+    {
+
+        setDefaults()
+
+        playSound([(2 + 4096)])
+
+        setDeltaLOF(0.01)
+        setDeltaLOFDist(0.01)
+        setDeltaR(0.01, 0.01)
+        setDeltaRDist(0.01, 0.01)
+
+        setColorA([255 + 255 * 256 + 255 * 65536 + 2550 * 65536 * 256])
+        setScale(200)
+        setLifespan(2)
+        setIsWorldSpace(1)
+        
+        createEffects(moshipDust.ebg, 100, 0)
+    }
+
+
+
+
+
+
+
+    at(0.01)
+    {
+
+        setDefaults()
+        reactorOffset <- fmult(size, -0.6)
+        setOffsetLOF(reactorOffset)        
+            temp <- fmult(size, 5.0)
+        setScale(temp)
+            temp <- fmult(size, 5.0)
+        setDeltaScale(temp)
+        setColorA([255 + 200 * 256 + 100 * 65536 + 255 * 65536 * 256])
+        setDeltaColorA(0, 0, 0, -255)
+        setTexture(textures\glow32 0, 0, 32, 32)
+        setAddColor(1.0, 0.45, 0.2)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(1.0)
+        createSprites(1, 0)
+
+
+
+
+
+        
+        setDefaults()
+            shockSize <- fmult(size, 5)
+            shockSizeRate <- fmult(size, 30)
+            reactorOffset <- fmult(size, -0.6)
+        setOffsetLOF(reactorOffset)
+        setScale(shockSize)
+        setDeltaScale(shockSizeRate)
+        setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+        setAddColor(1.0, 0.35, 0.2)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(0.1)
+        setTexture(textures\glow32 0, 0, 32, 32)
+        createSprites(1, 0)
+    }
+
+    
+    at(0.01)
+    {
+        setDefaults()
+
+                shiftLOFTemp1 <- fmult(size, -2)
+                shiftLOFTemp2 <- fmult(size, 2)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setOffsetLOF(reactorOffset)
+        setOffsetR(shiftR, shiftTheta)
+
+            temp <- fmult(size, 4.0)
+        setScale(temp)
+            MainBoomASize <- 1
+        setColorA([255 + 200 * 256 + 100 * 65536 + 255 * 65536 * 256])
+        setDeltaColorA(0, 0, 0, -255)
+        setTexture(textures\glow32 0, 0, 32, 32)
+        setAddColor(1.0, 0.45, 0.2)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(1.0)
+        createSprites(1, 0)
+
+
+
+
+
+        setDefaults()
+                firepuffSizeTemp <- 0.8
+            firepuffSize <- fmult(firepuffSizeTemp, size)
+                shiftLOFTemp1 <- fmult(size, -2)
+                shiftLOFTemp2 <- fmult(size, 2)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setEffOffsetLOF(reactorOffset)
+        setEffOffsetR(shiftR, shiftTheta)
+
+        spawn(B5explosion.ebg, firepuffSize)
+    }
+
+
+    at(0.1)
+        {
+        
+        spawn(DBsphere.ebg, size)
+        }
+    at(0.2)
+        {
+            particleSize <- fmult(size, 0.7)
+            particleVel <- fmult(size, 1)
+        spawn(B5genericdebris.ebg, 12, 9, particleSize, particleVel)
+        }
+    at(0.3)
+        {
+        
+        spawn(DDSshockwave.ebg, size)
+        }
+    at(0.4)
+        {
+            particleSize <- fmult(size, 0.7)
+            particleVel <- fmult(size, 0.8)
+        spawn(B5genericdebris.ebg, 15, 9, particleSize, particleVel)
+        }    
+    at(0.42)
+        {
+            particleSize <- fmult(size, 0.7)
+            particleVel <- fmult(size, 1)
+        spawn(B5genericdebris.ebg, 15, 0, particleSize, particleVel)
+        }    
+
+    at(0.44)
+        {
+            particleSize <- fmult(size, 0.7)
+            particleVel <- fmult(size, 0.9)
+        spawn(B5genericdebris.ebg, 15, 6, particleSize, particleVel)
+        }    
+    
+    at(0.6)
+    {
+        setDefaults()
+
+           shiftLOFTemp1 <- fmult(size, -0.5)
+                shiftLOFTemp2 <- fmult(size, 2)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setOffsetLOF(shiftLOF)
+        setOffsetR(shiftR, shiftTheta)
+
+            temp <- fmult(size, 6.0)
+        setScale(temp)
+            MainBoomASize <- 1
+        setColorA([255 + 200 * 256 + 100 * 65536 + 255 * 65536 * 256])
+        setDeltaColorA(0, 0, 0, -255)
+        setTexture(textures\glow32 0, 0, 32, 32)
+        setAddColor(1.0, 0.45, 0.2)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(1.0)
+        createSprites(1, 0)
+
+
+
+
+
+
+        setDefaults()
+                firepuffSizeTemp <- frandom(0.6, 1.0)
+            firepuffSize <- fmult(firepuffSizeTemp, size)
+                shiftLOFTemp1 <- fmult(size, -0.5)
+                shiftLOFTemp2 <- fmult(size, 2)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setEffOffsetLOF(shiftLOF)
+        setEffOffsetR(shiftR, shiftTheta)
+
+        spawn(B5explosion.ebg, firepuffSize)
+    }
+
+    
+    at(0.8)
+    {
+        setDefaults()
+
+      shiftLOFTemp1 <- fmult(size, 0)
+                shiftLOFTemp2 <- fmult(size, 2)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setOffsetLOF(shiftLOF)
+        setOffsetR(shiftR, shiftTheta)
+
+            temp <- fmult(size, 6.0)
+        setScale(temp)
+            MainBoomASize <- 1
+        setColorA([255 + 200 * 256 + 100 * 65536 + 255 * 65536 * 256])
+        setDeltaColorA(0, 0, 0, -255)
+        setTexture(textures\glow32 0, 0, 32, 32)
+        setAddColor(1.0, 0.45, 0.2)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(1.0)
+        createSprites(1, 0)
+
+
+
+
+        setDefaults()
+                firepuffSizeTemp <- frandom(0.6, 1.0)
+            firepuffSize <- fmult(firepuffSizeTemp, size)
+                shiftLOFTemp1 <- fmult(size, 0)
+                shiftLOFTemp2 <- fmult(size, 2)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setEffOffsetLOF(shiftLOF)
+        setEffOffsetR(shiftR, shiftTheta)
+
+        spawn(B5explosion.ebg, firepuffSize)
+    }
+
+//*************************** MAIN BOOM **************************************
+// created small at 0.8
+// EXPLOSION ie expands at 1.0
+// dies away at 3.0
+
+    at(1.0)
+    {
+        setDefaults()
+            temp <- fmult(size, 9.0)
+        setScale(temp)
+            temp <- fmult(size, 3.0)
+        setDeltaScale(temp)
+         //   MainBoomASize <- 1
+        setColorA([255 + 200 * 256 + 100 * 65536 + 255 * 65536 * 256])
+        setDeltaColorA(0, 0, 0, -115)
+        setTexture(textures\glow32 0, 0, 32, 32)
+        setAddColor(1.0, 0.45, 0.2)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(2.6)
+setOffsetLOF(-1)
+        MainBoomA <- createSprites(1, 0)
+    }    
+
+    at(1.0)
+    {
+        setDefaults()
+            temp <- fmult(size, 8.0)
+        setScale(temp)
+            temp <- fmult(size, 2.0)
+        setDeltaScale(temp)
+         //   MainBoomBSize <- 1
+        setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+            MainBoomBColor0 <- [255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256]
+            MainBoomBColor1 <- [255 + 160 * 256 + 20 * 65536 + 255 * 65536 * 256]
+            MainBoomBColor2 <- [255 + 70 * 256 + 0 * 65536 + 0 * 65536 * 256]
+        setTexture(textures\glow32 0, 0, 32, 32)
+        setAddColor(1.0, 0.3, 0.0)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(2.2)
+setOffsetLOF(-1)
+        MainBoomB <- createSprites(1, 0)        
+        }
+
+at(1.1)
+    {
+        setDefaults()
+shiftLOFTemp1 <- fmult(size, 0)
+                shiftLOFTemp2 <- fmult(size, 3)
+                shiftRTemp1 <- fmult(size, -0.5)
+                shiftRTemp2 <- fmult(size, 0.5)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setOffsetLOF(shiftLOF)
+        setOffsetR(shiftR, shiftTheta)
+
+
+
+            temp <- fmult(size, 9.0)
+        setScale(temp)
+            temp <- fmult(size, 3.0)
+        setDeltaScale(temp)
+        setColorA([255 + 200 * 256 + 100 * 65536 + 255 * 65536 * 256])
+        setDeltaColorA(0, 0, 0, -115)
+        setTexture(textures\glow32 0, 0, 32, 32)
+        setAddColor(1.0, 0.45, 0.20)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(2.6)
+setOffsetLOF(3)
+        createSprites(1, 0)
+    }    
+
+    at(1.1)
+    {
+        setDefaults()
+shiftLOFTemp1 <- fmult(size, 0)
+                shiftLOFTemp2 <- fmult(size, 1)
+                shiftRTemp1 <- fmult(size, -0.2)
+                shiftRTemp2 <- fmult(size, 0.2)
+            shiftLOF <- frandom(shiftLOFTemp1, shiftLOFTemp2)
+            shiftR <- frandom(shiftRTemp1, shiftRTemp2)
+            shiftTheta <- frandom(0.01, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setOffsetLOF(shiftLOF)
+        setOffsetR(shiftR, shiftTheta)
+        
+
+
+    temp <- fmult(size, 8.0)
+        setScale(temp)
+            temp <- fmult(size, 2.0)
+        setDeltaScale(temp)
+        setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+            MainBoomBColor0 <- [255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256]
+            MainBoomBColor1 <- [255 + 160 * 256 + 20 * 65536 + 255 * 65536 * 256]
+            MainBoomBColor2 <- [255 + 70 * 256 + 0 * 65536 + 0 * 65536 * 256]
+        setTexture(textures\glow32 0, 0, 32, 32)
+        setAddColor(1.0, 0.3, 0.0)
+        setLighting(0)
+        setIllum(1)
+        setLifespan(2.2)
+setOffsetLOF(3)
+        createSprites(1, 0)        
+        }
+//************************** MAIN SPARKS *************************************
+    at(1.0)
+    {
+        setDefaults()
+        setScale(1)
+            sparkSize <- fmult(size, 1)
+            sparkSpeed <- fmult(size, 2.4)
+            sparkSpeedLOF <- fmult(size, 4.8)
+            sparkSpeedDist <- fmult(size, 0.8)
+        setDeltaLOFDist(sparkSize)
+        setDeltaR(sparkSize, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setDeltaRDist(0, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setVelLOFDist(sparkSpeedLOF)
+        setVelR(sparkSpeed)
+        setVelRDist(sparkSpeedDist)
+    
+        setColorA([255 + 230 * 256 + 120 * 65536 + 230 * 65536 * 256])
+            ModMainSparkColor <- [255 + 230 * 256 + 120 * 65536 + 230 * 65536 * 256]
+
+        setLifespan(2)
+        setIsWorldSpace(1)
+        Mainsparks <- createLines(20,0)
+        {
+            sparkLength <- fmult(size, 0.2)
+            sparkLengthDist <- fmult(size, 0.04)
+        setLength(sparkLength)
+        setLengthDist(sparkLengthDist)
+        }
+    }
+
+//***************************** DEBRIS ***************************************
+    at(1.0)
+    {
+        setDefaults()
+            systemSize <- fmult(size, 0.4)
+            systemSizeDist <- fmult(size, 0.1)
+            particleVel <- fmult(size, 0.7)
+            particleVelDist <- fmult(size, 0.3)
+        setDeltaLOFDist(systemSize)
+        setDeltaR(systemSize, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setDeltaRDist(systemSizeDist, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setVelLOFDist(particleVel)
+        setVelR(particleVel)
+        setVelRDist(particleVelDist)
+		systemSize <- fmult(size, 1.5)
+	setLOFOffset(systemSize)
+
+            particleSize <- fmult(size, 0.006)
+            particleSizeDist <- fmult(size, 0.002)
+        setScale(particleSize)
+        setScaleDist(particleSizeDist)
+       
+        setMesh(etg\meshes\debris1.peo)
+        setTexture(textures\debris\Debris1_128, 0, 0, 128, 128)
+
+        setAlphaMode(0)
+  
+        setLighting(1)
+        setIllum(0)
+        setLifespan(6)
+    
+        setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+            Debris1Color0 <- [255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256]
+            Debris1Color1 <- [255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256]
+            Debris1Color2 <- [255 + 255 * 256 + 255 * 65536 + 0 * 65536 * 256]
+
+        Debris1 <- createMeshes(16,0)
+        {
+                TumbleXTemp1 <- [(0.1) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleXTemp2 <- [(360) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleX <- frandom(TumbleXTemp1, TumbleXTemp2)
+                TumbleYTemp1 <- [(0.1) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleYTemp2 <- [(360) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleY <- frandom(TumbleYTemp1, TumbleYTemp2)
+                TumbleZTemp1 <- [(0.1) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleZTemp2 <- [(360) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleZ <- frandom(TumbleZTemp1, TumbleZTemp2)
+            setTumble(TumbleX, TumbleY, TumbleZ)
+            
+                TumbleXTemp1 <- [(-60) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleXTemp2 <- [(60) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleX <- frandom(TumbleXTemp1, TumbleXTemp2)
+            alternate
+            {
+                alt(1):
+                    setDeltaTumble(TumbleX, 0, 0)
+                alt(1):
+                    setDeltaTumble(0, TumbleX, 0)
+                alt(1):
+                    setDeltaTumble(0, 0, TumbleX)
+            }
+        }
+    }
+
+    at(1.0)
+    {
+        setDefaults()
+            systemSize <- fmult(size, 0.5)
+            systemSizeDist <- fmult(size, 0.)
+            particleVel <- fmult(size, 0.8)
+            particleVelDist <- fmult(size, 0.5)
+        setDeltaLOFDist(systemSize)
+        setDeltaR(systemSize, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setDeltaRDist(systemSizeDist, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setVelLOFDist(particleVel)
+        setVelR(particleVel)
+        setVelRDist(particleVelDist)
+		systemSize <- fmult(size, 1.5)
+	setLOFOffset(systemSize)
+
+            particleSize <- fmult(size, 0.007)
+            particleSizeDist <- fmult(size, 0.002)
+        setScale(particleSize)
+        setScaleDist(particleSizeDist)
+
+        setMesh(etg\meshes\debris2a.peo)
+
+        setTexture(textures\debris\Debris2_64, 0, 0, 64, 64)
+        
+        setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+            Debris2aColor0 <- [255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256]
+            Debris2aColor1 <- [255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256]
+            Debris2aColor2 <- [255 + 255 * 256 + 255 * 65536 + 0 * 65536 * 256]
+
+        setAlphaMode(0)
+
+        setLighting(1)
+        setIllum(0)
+        setLifespan(6)
+        Debris2a <- createMeshes(30,0)
+        {
+                TumbleXTemp1 <- [(0.1) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleXTemp2 <- [(360) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleX <- frandom(TumbleXTemp1, TumbleXTemp2)
+                TumbleYTemp1 <- [(0.1) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleYTemp2 <- [(360) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleY <- frandom(TumbleYTemp1, TumbleYTemp2)
+                TumbleZTemp1 <- [(0.1) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleZTemp2 <- [(360) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleZ <- frandom(TumbleZTemp1, TumbleZTemp2)
+            setTumble(TumbleX, TumbleY, TumbleZ)
+
+                TumbleXTemp1 <- [(-150) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleXTemp2 <- [(150) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleX <- frandom(TumbleXTemp1, TumbleXTemp2)
+            alternate
+            {
+                alt(1):
+                    setDeltaTumble(TumbleX, 0, 0)
+                alt(1):
+                    setDeltaTumble(0, TumbleX, 0)
+                alt(1):
+                    setDeltaTumble(0, 0, TumbleX)
+            }
+        }
+    }
+
+    at(1.0)
+    {
+        setDefaults()
+            systemSize <- fmult(size, 0.5)
+            systemSizeDist <- fmult(size, 0.2)
+            particleVel <- fmult(size, 0.8)
+            particleVelDist <- fmult(size, 0.5)
+        setDeltaLOFDist(systemSize)
+	setDeltaR(systemSize, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setDeltaRDist(systemSizeDist, [(360) * 2.0 * 3.14159265359789 / 360.0])
+        setVelLOFDist(particleVel)
+        setVelR(particleVel)
+        setVelRDist(particleVelDist)
+		systemSize <- fmult(size, 1.5)
+	setLOFOffset(systemSize)
+
+            particleSize <- fmult(size, 0.007)
+            particleSizeDist <- fmult(size, 0.002)
+        setScale(particleSize)
+        setScaleDist(particleSizeDist)
+
+        setMesh(etg\meshes\debris2b.peo)
+
+        setTexture(textures\debris\Debris2_64, 0, 0, 64, 64)
+        
+        setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+            Debris2bColor0 <- [255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256]
+            Debris2bColor1 <- [255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256]
+            Debris2bColor2 <- [255 + 255 * 256 + 255 * 65536 + 0 * 65536 * 256]
+
+        setAlphaMode(0)
+
+        setLighting(1)
+        setIllum(0)
+        setLifespan(6)
+        Debris2b <- createMeshes(30,0)
+        {
+                TumbleXTemp1 <- [(0.1) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleXTemp2 <- [(360) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleX <- frandom(TumbleXTemp1, TumbleXTemp2)
+                TumbleYTemp1 <- [(0.1) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleYTemp2 <- [(360) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleY <- frandom(TumbleYTemp1, TumbleYTemp2)
+                TumbleZTemp1 <- [(0.1) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleZTemp2 <- [(360) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleZ <- frandom(TumbleZTemp1, TumbleZTemp2)
+            setTumble(TumbleX, TumbleY, TumbleZ)
+
+                TumbleXTemp1 <- [(-150) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleXTemp2 <- [(150) * 2.0 * 3.14159265359789 / 360.0]
+                TumbleX <- frandom(TumbleXTemp1, TumbleXTemp2)
+            alternate
+            {
+                alt(1):
+                    setDeltaTumble(TumbleX, 0, 0)
+                alt(1):
+                    setDeltaTumble(0, TumbleX, 0)
+                alt(1):
+                    setDeltaTumble(0, 0, TumbleX)
+            }
+        }
+    }
+}
+
+eachFrame
+{
+after(1.01)
+{
+    //temp <- fmult(size, MainBoomASize)
+//modifyScale(MainBoomA, temp)
+    //temp <- fmult(size, MainBoomBSize)
+//modifyScale(MainBoomB, temp)
+modifyColorA(MainBoomB, MainBoomBColor0)
+}
+after(1.01)
+{
+modifyColorA(Mainsparks, ModMainSparkColor)
+modifyColorA(Debris1, Debris1Color0)
+modifyColorA(Debris2a, Debris2aColor0)
+modifyColorA(Debris2b, Debris2bColor0)
+}
+}
+
+timeIndex
+{
+    after(0.81)
+{
+    //timeBlock(MainBoomASize)
+    //{
+    //    time(1.0, 5)
+    //    time(3.4, 8)
+    //}
+
+    //timeBlock(MainBoomBSize)
+    //{
+    //    time(1.0, 4)
+    //    time(3.0, 7)
+    //}
+
+    timeBlock(MainBoomBColor0)
+    {
+        time(2.2, MainBoomBColor1)
+        time(3.0, MainBoomBColor2)
+    }
+}
+    after(1.01)
+{
+    timeBlock(ModMainSparkColor)
+    {
+        time(2.5, 1.0, 0.9, 0.5, 0.7)
+        time(3.5, 1.0, 0.5, 0.0, 0)
+    }
+
+    timeBlock(Debris1Color0)
+    {
+        time(6.2, Debris1Color1)
+        time(7.0, Debris1Color2)
+    }
+    
+    timeBlock(Debris2aColor0)
+    {
+        time(6.2, Debris2aColor1)
+        time(7.0, Debris2aColor2)
+    }
+
+    timeBlock(Debris2bColor0)
+    {
+        time(6.2, Debris2bColor1)
+        time(7.0, Debris2bColor2)
+    }
+}
+
+}
+
+
+
+eachFrame
+{
+    at(1)
+    {
+        hideParentShip()
+        deleteParentShip()
+
+    }
+
+    at(7)
+    {
+        delete()
+    }
+}

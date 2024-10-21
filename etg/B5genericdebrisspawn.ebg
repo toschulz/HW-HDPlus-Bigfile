@@ -1,0 +1,177 @@
+// B5 Generic Glowing/Burning Debris Spawn - v1.1 - CnlPepper@mailandnews.com
+
+// Usage: createEffects(B5debrisspawn.ebg, number, variance in number, debris type, size, velocity)
+
+// Debris types:
+//     0) Glowing Debris
+//     1) Burning Debris
+
+eventStart(int type = 0, float debrissize = 40, float debrisvelocity = 40)
+
+variable
+{
+float size
+float vel
+
+float temp
+float temp2
+float temp3
+
+float tumbleX
+float tumbleY
+float tumbleZ
+
+int debris
+int glow
+
+RGBA DebrisColor0
+RGBA DebrisColor1
+RGBA DebrisColor2
+
+RGBA GlowColor0
+RGBA GlowColor1
+RGBA GlowColor2
+
+float firesize
+float sparksize
+}
+
+startup
+{
+        size <- fmult(debrissize, 1)
+        vel <- fmult(debrisvelocity, 1)
+
+        firesize <- 0.08
+
+// ******************** Texture and Model **********************
+    setDefaults()
+
+        temp <- fmult(size, 0.012)
+    setScale(temp)      
+
+    setAlphaMode(0)
+    setLighting(1)
+    setIllum(0)
+    setLifespan(7.0)    
+
+    // **** Glowing/Burning Debris ****
+    alternate
+        {       
+        alt(1):
+            setMesh(etg\meshes\block1.peo)
+        alt(1):
+            setMesh(etg\meshes\block2.peo)
+        alt(1):
+            setMesh(etg\meshes\block3.peo)
+        }
+    setTexture(textures\debris\B5debrispanel, 0, 0, 128, 128)                
+
+    setColorA([255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256])
+        DebrisColor0 <- [255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256]
+        DebrisColor1 <- [255 + 255 * 256 + 255 * 65536 + 255 * 65536 * 256]
+        DebrisColor2 <- [255 + 255 * 256 + 255 * 65536 + 0 * 65536 * 256]
+
+        temp <- [(0.1) * 2.0 * 3.14159265359789 / 360.0]
+        temp2 <- [(360) * 2.0 * 3.14159265359789 / 360.0]
+        tumbleX <- frandom(temp, temp2)
+        tumbleY <- frandom(temp, temp2)
+        tumbleZ <- frandom(temp, temp2)
+    setTumble(tumbleX, tumbleY, tumbleZ)
+           
+        temp <- [-1.3]
+        temp2 <- [1.3]
+        tumbleX <- frandom(temp, temp2)
+    alternate
+        {
+        alt(1):
+            setDeltaTumble(tumbleX, 0, 0)
+        alt(1):
+            setDeltaTumble(0, tumbleX, 0)
+        alt(1):
+            setDeltaTumble(0, 0, tumbleX)
+        }
+    setIsworldSpace(1)
+    setVelocityInWorldSpace(1)
+    debris <- createMeshes(1, 0)
+        
+
+// ******************** Glow **********************
+    setDefaults()
+        temp <- fmult(size, 0.06)
+    setScale(temp)
+    setColorA([255 + 255 * 256 + 255 * 65536 + 160 * 65536 * 256])
+        GlowColor0 <- [255 + 255 * 256 + 255 * 65536 + 160 * 65536 * 256]
+        GlowColor1 <- [255 + 160 * 256 + 20 * 65536 + 160 * 65536 * 256]
+        GlowColor2 <- [255 + 70 * 256 + 0 * 65536 + 0 * 65536 * 256]
+    setTexture(textures\glow32 0, 0, 32, 32)
+    setAddColor(0.6, 0.15, 0.0)
+    setLighting(0)
+    setIllum(1)
+    setLifespan(4.0)
+    setIsworldSpace(1)
+    setVelocityInWorldSpace(1)
+    glow <- createSprites(1, 0)
+}
+    
+// ******************** Fireballs **********************
+eachFrame
+{
+    if(type == 1)
+        {
+        // **** Burning Debris ****
+        before(3.0)
+            {
+                temp <- fdiv(1, vel)
+            if (temp < 0.2)
+                {
+                    temp <- 0.2
+                }
+         	temp2 <- fmult(size, firesize)
+            every(temp)
+                {
+                setDefaults()
+                spawn(B5fireball.ebg, temp2)
+                }
+            }
+        }
+}
+
+eachFrame
+{
+    modifyColorA(debris, DebrisColor0)
+    modifyColorA(glow, GlowColor0)
+        temp <- fmult(size, 0.10)
+        temp2 <- fmult(size, 0.16)
+        temp3 <- frandom(temp, temp2)
+    modifyScale(glow, temp3)
+}
+
+timeIndex
+{
+    timeBlock(DebrisColor0)
+        {
+        time(6.2, DebrisColor1)
+        time(7.0, DebrisColor2)
+        }
+
+    timeBlock(GlowColor0)
+        {
+        time(3.0, GlowColor1)
+        time(4.0, GlowColor2)
+        }
+
+    timeBlock(firesize)
+        {
+        time(1.8, 0.08)
+        time(2.7, 0.001)
+        }
+}
+
+
+eachFrame
+{
+    at(7.0)
+        {
+        delete()
+        }
+}
